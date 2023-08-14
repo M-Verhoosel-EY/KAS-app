@@ -1,12 +1,13 @@
 <script setup>
 import { RplPrimaryNav } from "@dpc-sdp/ripple-ui-core/vue";
+import image from "../assets/images/vic-gov.png";
 </script>
 
 <template>
   <RplPrimaryNav
     :primary-logo="{
       href: '#',
-      src: '../assets/images/vic-gov.png',
+      src: image, 
       printsrc: '../assets/images/vic-gov.png',
       altText: 'VIC.GOV.AU',
     }"

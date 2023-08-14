@@ -1,5 +1,8 @@
-<script setup>
+<script>
 import { RplBreadcrumbs } from "@dpc-sdp/ripple-ui-core/vue";
+export default {
+  components: { RplBreadcrumbs },
+};
 </script>
 
 <template>
@@ -8,7 +11,7 @@ import { RplBreadcrumbs } from "@dpc-sdp/ripple-ui-core/vue";
       :items="[
         {
           text: 'Login',
-          url: '/',
+          url: 'https://www.ripple.sdp.vic.gov.au/',
         },
         {
           text: 'Enrolment',
@@ -20,7 +23,7 @@ import { RplBreadcrumbs } from "@dpc-sdp/ripple-ui-core/vue";
         },
         {
           text: 'Review Attendance',
-          url: 'review-attendance',
+          url: '/review-attendance',
         },
       ]"
     />
