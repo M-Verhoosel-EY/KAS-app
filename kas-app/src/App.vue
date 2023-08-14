@@ -1,16 +1,28 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 import Navigation from "./components/Navigation.vue";
+import { RplBreadcrumbs } from "@dpc-sdp/ripple-ui-core/vue";
 import Breadcrumbs from "./components/Breadcrumbs.vue";
-import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
 import "@dpc-sdp/ripple-ui-core/style";
 import "@dpc-sdp/ripple-ui-core/style/components";
+export default {
+  components: {
+    Breadcrumbs,
+    Navigation,
+    RplBreadcrumbs,
+  },
+};
 </script>
 
 <template>
   <div><Navigation /></div>
   <div><Breadcrumbs /></div>
+  <ol class="rpl-type-list-ol">
+    <li><RouterLink to="/">Login</RouterLink></li>
+    <li><RouterLink to="/enrolment">Enrolment</RouterLink></li>
+    <li><RouterLink to="/record-attendance">Record attendance</RouterLink></li>
+    <li><RouterLink to="/review-attendance">Review attendance</RouterLink></li>
+  </ol>
   <!-- <header>
     <div class="rpl-grid">
       <div class="rpl-col-12"><u>Header</u></div>
@@ -29,6 +41,3 @@ import "@dpc-sdp/ripple-ui-core/style/components";
 
   <RouterView />
 </template>
-
-<style scoped>
-</style>

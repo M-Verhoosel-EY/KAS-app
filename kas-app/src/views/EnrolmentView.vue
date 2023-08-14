@@ -1,5 +1,5 @@
 <template>
-  <div class="enrolement">
+  <div class="enrolment">
     <h1>This is the enrolment page</h1>
     <div class="rpl-grid">
       <div class="rpl-col-10 rpl-col-start-2">
