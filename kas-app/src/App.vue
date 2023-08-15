@@ -1,43 +1,41 @@
 <script>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 import Navigation from "./components/Navigation.vue";
 import { RplBreadcrumbs } from "@dpc-sdp/ripple-ui-core/vue";
 import Breadcrumbs from "./components/Breadcrumbs.vue";
 import "@dpc-sdp/ripple-ui-core/style";
 import "@dpc-sdp/ripple-ui-core/style/components";
+import RecordAttendance from "./views/RecordAttendance.vue";
 export default {
   components: {
     Breadcrumbs,
     Navigation,
     RplBreadcrumbs,
+    RecordAttendance,
   },
 };
 </script>
 
 <template>
-  <div><Navigation /></div>
-  <div><Breadcrumbs /></div>
-  <ol class="rpl-type-list-ol">
-    <li><RouterLink to="/">Login</RouterLink></li>
-    <li><RouterLink to="/enrolment">Enrolment</RouterLink></li>
-    <li><RouterLink to="/record-attendance">Record attendance</RouterLink></li>
-    <li><RouterLink to="/review-attendance">Review attendance</RouterLink></li>
-  </ol>
-  <!-- <header>
-    <div class="rpl-grid">
-      <div class="rpl-col-12"><u>Header</u></div>
-    </div>
-    <div class="wrapper">
-      <Navigation />
-      <HelloWorld msg="You did it!" />
-      <RplButton>My Button!</RplButton>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/enrolment">Enrolment</RouterLink>
-      </nav>
-    </div>
-  </header> -->
-
+  <div class="app-screen">
+    <Navigation id="navbar" />
+  </div>
   <RouterView />
 </template>
+
+<style scoped>
+.app-screen {
+  display: grid;
+  height: 10vh;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 0.2fr;
+  grid-template-areas:
+    "navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar";
+}
+
+#navbar {
+  margin-left: -0.5rem;
+  margin-top: -2.5rem;
+  grid-area: navbar;
+}
+</style>
