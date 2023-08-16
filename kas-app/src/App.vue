@@ -5,6 +5,7 @@ import { RplBreadcrumbs } from "@dpc-sdp/ripple-ui-core/vue";
 import Breadcrumbs from "./components/Breadcrumbs.vue";
 import "@dpc-sdp/ripple-ui-core/style";
 import "@dpc-sdp/ripple-ui-core/style/components";
+//import "vuetify/styles";
 import RecordAttendance from "./views/RecordAttendance.vue";
 export default {
   components: {
@@ -29,8 +30,7 @@ export default {
   height: 10vh;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 0.2fr;
-  grid-template-areas:
-    "navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar";
+  grid-template-areas: "navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar navbar";
 }
 
 #navbar {
