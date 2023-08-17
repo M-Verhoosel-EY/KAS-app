@@ -1,52 +1,62 @@
 <template>
   <div class="enrolment">
     <div class="rpl-grid">
-      <div class="rpl-col-10 rpl-col-start-2">
+      <div class="rpl-col-12 rpl-col-start-1">
         <div class="rpl-grid">
-          <div class="rpl-col-2">
+          <div class="rpl-col-2" style="margin-left: 1.5rem">
             <div class="rpl-card rpl-u-padding-8">
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
                 INSTITUTION DETAILS
               </h2>
               <p class="rpl-type-p rpl-u-margin-b-4">
-                Funding for public-facing small businesses to purchase equipment and
-                upgrades to improve ventilation and reduce the spread of COVID-19 and
-                boost customer confidence.
+                Funding for public-facing small businesses to purchase equipment
+                and upgrades to improve ventilation and reduce the spread of
+                COVID-19 and boost customer confidence.
               </p>
-              <button class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4">
+              <button
+                class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+              >
                 <div class="grey-square"></div>
                 CBD
               </button>
-              <button class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4">
+              <button
+                class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+              >
                 <div class="grey-square"></div>
                 Frankston
               </button>
-              <button class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4">
+              <button
+                class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+              >
                 <div class="grey-square"></div>
                 Mulgrave
               </button>
-              <button class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4">
+              <button
+                class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+              >
                 <div class="grey-square"></div>
                 Fitzroy
               </button>
-              <button class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4">
+              <button
+                class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+              >
                 <div class="grey-square"></div>
                 Doncaster
               </button>
             </div>
           </div>
-          <div class="rpl-col-4 rpl-col-start-3">
+          <div class="rpl-col-5 rpl-col-start-3">
             <div class="rpl-card rpl-u-padding-8">
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
                 CLASS
               </h2>
               <p class="rpl-type-p rpl-u-margin-b-8">
-                Funding for public-facing small businesses to purchase equipment and
-                upgrades to improve ventilation and reduce the spread of COVID-19 and
-                boost customer confidence.
+                Funding for public-facing small businesses to purchase equipment
+                and upgrades to improve ventilation and reduce the spread of
+                COVID-19 and boost customer confidence.
               </p>
-              <hr>
-              <button class="class-btn"> 
+              <hr />
+              <button class="class-btn">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -54,10 +64,14 @@
                     <p class="rpl-type-p">Class Details</p>
                   </div>
                 </div>
-                <RplIcon name="icon-arrow-right" colour="default" class="arrow-icon"/>
+                <RplIcon
+                  name="icon-arrow-right"
+                  colour="default"
+                  class="arrow-icon"
+                />
               </button>
-              <hr>
-              <button class="class-btn"> 
+              <hr />
+              <button class="class-btn">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -65,10 +79,14 @@
                     <p class="rpl-type-p">Class Details</p>
                   </div>
                 </div>
-                <RplIcon name="icon-arrow-right" colour="default" class="arrow-icon"/>
+                <RplIcon
+                  name="icon-arrow-right"
+                  colour="default"
+                  class="arrow-icon"
+                />
               </button>
-              <hr>
-              <button class="class-btn"> 
+              <hr />
+              <button class="class-btn">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -76,10 +94,14 @@
                     <p class="rpl-type-p">Class Details</p>
                   </div>
                 </div>
-                <RplIcon name="icon-arrow-right" colour="default" class="arrow-icon"/>
+                <RplIcon
+                  name="icon-arrow-right"
+                  colour="default"
+                  class="arrow-icon"
+                />
               </button>
-              <hr>
-              <button class="class-btn"> 
+              <hr />
+              <button class="class-btn">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -87,10 +109,14 @@
                     <p class="rpl-type-p">Class Details</p>
                   </div>
                 </div>
-                <RplIcon name="icon-arrow-right" colour="default" class="arrow-icon"/>
+                <RplIcon
+                  name="icon-arrow-right"
+                  colour="default"
+                  class="arrow-icon"
+                />
               </button>
-              <hr>
-              <button class="class-btn"> 
+              <hr />
+              <button class="class-btn">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -98,10 +124,14 @@
                     <p class="rpl-type-p">Class Details</p>
                   </div>
                 </div>
-                <RplIcon name="icon-arrow-right" colour="default" class="arrow-icon"/>
+                <RplIcon
+                  name="icon-arrow-right"
+                  colour="default"
+                  class="arrow-icon"
+                />
               </button>
-              <hr>
-              <button class="class-btn"> 
+              <hr />
+              <button class="class-btn">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -109,82 +139,93 @@
                     <p class="rpl-type-p">Class Details</p>
                   </div>
                 </div>
-                <RplIcon name="icon-arrow-right" colour="default" class="arrow-icon"/>
+                <RplIcon
+                  name="icon-arrow-right"
+                  colour="default"
+                  class="arrow-icon"
+                />
               </button>
-              <hr>
+              <hr />
             </div>
           </div>
-          <div class="rpl-col-4 rpl-col-start-7">
+          <div class="rpl-col-5 rpl-col-start-8" style="margin-right: 1.5rem">
             <div class="rpl-card rpl-u-padding-8">
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
                 CHILDREN
               </h2>
               <p class="rpl-type-p rpl-u-margin-b-8">
-                Funding for public-facing small businesses to purchase equipment and
-                upgrades to improve ventilation and reduce the spread of COVID-19 and
-                boost customer confidence.
+                Funding for public-facing small businesses to purchase equipment
+                and upgrades to improve ventilation and reduce the spread of
+                COVID-19 and boost customer confidence.
               </p>
               <h3 class="rpl-type-h3-fixed">Add Students</h3>
               <div class="add-students">
-                  <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                  <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                  <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                  <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                  <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                  <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <img class="student-icon" src="../assets/images/avatar.jpeg" />
               </div>
-              <hr>
-              <div class="enrolled-heading"> 
+              <hr />
+              <div class="enrolled-heading">
                 <h3 class="rpl-type-h3-fixed">Enrolled</h3>
-                <RplSearchBar
-                  variant="reverse"
-                  id="reverse"
-                />
+                <RplSearchBar variant="reverse" id="reverse" />
               </div>
               <div class="enrol-students">
-                <div class="avatar-card"> 
+                <div class="avatar-card">
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">Bobby Joe</p>
+                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
+                    Bobby Joe
+                  </p>
                 </div>
-                <div class="avatar-card"> 
+                <div class="avatar-card">
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">Bobby Joe</p>
+                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
+                    Bobby Joe
+                  </p>
                 </div>
-                <div class="avatar-card"> 
+                <div class="avatar-card">
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">Bobby Joe</p>
+                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
+                    Bobby Joe
+                  </p>
                 </div>
-                <div class="avatar-card"> 
+                <div class="avatar-card">
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">Bobby Joe</p>
+                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
+                    Bobby Joe
+                  </p>
                 </div>
-                <div class="avatar-card"> 
+                <div class="avatar-card">
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">Bobby Joe</p>
+                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
+                    Bobby Joe
+                  </p>
                 </div>
-                <div class="avatar-card"> 
+                <div class="avatar-card">
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">Bobby Joe</p>
+                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
+                    Bobby Joe
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-  import { RplIcon, RplSearchBar } from "@dpc-sdp/ripple-ui-core/vue";
+import { RplIcon, RplSearchBar } from "@dpc-sdp/ripple-ui-core/vue";
 </script>
-
 
 <style>
 @media (min-width: 1024px) {
   .enrolment {
-    min-height: 80vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
   }
@@ -197,7 +238,7 @@
     align-items: center;
   }
   .institution:hover {
-    background-color: var(--rpl-clr-accent-alt); 
+    background-color: var(--rpl-clr-accent-alt);
   }
   .class-btn {
     border-radius: var(--rpl-border-radius-4);
@@ -214,7 +255,7 @@
     display: flex;
   }
   .class-btn:hover {
-    background-color: var(--rpl-clr-accent-alt); 
+    background-color: var(--rpl-clr-accent-alt);
   }
   .grey-square {
     background-color: lightgray;
