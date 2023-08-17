@@ -1,53 +1,81 @@
 <template>
-  <v-table>
-    <thead>
-      <tr>
-        <th class="text-left">Name</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th class="text-left">8.00am</th>
-        <th class="text-left">9.00am</th>
-        <th class="text-left">10.00am</th>
-        <th class="text-left">11.00am</th>
-        <th class="text-left">12.00pm</th>
-        <th class="text-left">1.00pm</th>
-        <th class="text-left">2.00pm</th>
-        <th class="text-left">3.00pm</th>
-        <th class="text-left">4.00pm</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in desserts" :key="item.name">
-        <td colspan="4">{{ item.name }}</td>
-        <td>
-          <v-btn variant="outlined" id="present-button"> Present</v-btn>
-        </td>
-        <td>
-          <v-btn variant="outlined" id="partial-button"> Partial </v-btn>
-        </td>
-        <td>
-          <v-btn variant="outlined" id="absent-button" style=""> Absent </v-btn>
-        </td>
-        <td colspan="9">
-          <v-range-slider v-model="value" :id="item.name" strict
-            ></v-range-slider
-          >
-        </td>
-      </tr>
-    </tbody>
-  </v-table>
+  <div class="rpl-table">
+    <div class="rpl-table__scroll-container" tabindex="0">
+      <table style="width: 400rem">
+        <thead>
+          <tr>
+            <th colspan="2">Name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th class="text-left">8.00am</th>
+            <th class="text-left">9.00am</th>
+            <th class="text-left">10.00am</th>
+            <th class="text-left">11.00am</th>
+            <th class="text-left">12.00pm</th>
+            <th class="text-left">1.00pm</th>
+            <th class="text-left">2.00pm</th>
+            <th class="text-left">3.00pm</th>
+            <th class="text-left">4.00pm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2">Everett Friedman</td>
+            <td><RplButton label="Present" id="present-button" /></td>
+            <td><RplButton label="Partial" id="partial-button" /></td>
+            <td><RplButton label="Absent" id="absent-button" /></td>
+            <td colspan="9">
+              <Slider />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Ethel Terry</td>
+            <td><RplButton label="Present" id="present-button" /></td>
+            <td><RplButton label="Partial" id="partial-button" /></td>
+            <td><RplButton label="Absent" id="absent-button" /></td>
+            <td colspan="9">
+              <Slider />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Andrew Fisher</td>
+            <td><RplButton label="Present" id="present-button" /></td>
+            <td><RplButton label="Partial" id="partial-button" /></td>
+            <td><RplButton label="Absent" id="absent-button" /></td>
+            <td colspan="9">
+              <Slider />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Jessie Montes</td>
+            <td><RplButton label="Present" id="present-button" /></td>
+            <td><RplButton label="Partial" id="partial-button" /></td>
+            <td><RplButton label="Absent" id="absent-button" /></td>
+            <td colspan="9">
+              <Slider />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Bryan Erickson</td>
+            <td><RplButton label="Present" id="present-button" /></td>
+            <td><RplButton label="Partial" id="partial-button" /></td>
+            <td><RplButton label="Absent" id="absent-button" /></td>
+            <td colspan="9">
+              <Slider />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
-//import "vuetify/styles";
 export default {
   data() {
     return {
-      value: [5, 80],
+      value: [5, 85],
       desserts: [
         {
           name: "Everett Friedman",
@@ -73,6 +101,11 @@ export default {
     };
   },
 };
+</script>
+
+<script setup>
+import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
+import Slider from "./Slider.vue";
 </script>
 
 <style>
