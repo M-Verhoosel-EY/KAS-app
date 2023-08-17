@@ -24,7 +24,7 @@
       <tr v-for="item in desserts" :key="item.name">
         <td colspan="4">{{ item.name }}</td>
         <td>
-          <v-btn variant="outlined" id="present-button"> Present </v-btn>
+          <v-btn variant="outlined" id="present-button"> Present</v-btn>
         </td>
         <td>
           <v-btn variant="outlined" id="partial-button"> Partial </v-btn>
@@ -85,6 +85,13 @@ export default {
 }
 .v-btn.v-btn--density-default#present-button {
   color: #4caf50;
+}
+.v-btn.v-btn--density-default#present-button:hover {
+  color: #4caf50;
+}
+.v-btn__content {
+  color: black;
+  font-size: 12px;
 }
 .v-btn.v-btn--density-default#partial-button {
   color: #ffeb3b;

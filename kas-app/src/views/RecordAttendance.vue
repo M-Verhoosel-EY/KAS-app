@@ -84,14 +84,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-const items = ref([
-  { message: "Everett Friedman" },
-  { message: "Ethel Terry" },
-  { message: "Andrew Fisher" },
-  { message: "Jessie Montes" },
-  { message: "Bryan Erickson" },
-]);
 import Slider from "../components/Slider.vue";
 import {
   RplNavCard,
