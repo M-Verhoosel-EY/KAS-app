@@ -22,10 +22,31 @@
             url="https://vic.gov.au"
           />
         </div>
-        <div class="grey-line"></div>
-        <RplButton class="class-button" label="Class 1A" icon-name="icon-add" />
-        <RplButton class="class-button" label="Class 1B" icon-name="icon-add" />
-        <RplButton class="class-button" label="Class 1C" icon-name="icon-add" />
+        <div class="grey-line-attendance"></div>
+        <button
+          class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+        >
+          <div class="grey-square"></div>
+          Class 1A
+        </button>
+        <button
+          class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+        >
+          <div class="grey-square"></div>
+          Class 1B
+        </button>
+        <button
+          class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+        >
+          <div class="grey-square"></div>
+          Class 1C
+        </button>
+        <button
+          class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+        >
+          <div class="grey-square"></div>
+          Class 2A
+        </button>
       </RplNavCard>
     </div>
     <div id="class-content">
@@ -40,6 +61,7 @@
           <p>Year 1A</p>
         </ul>
         <RplIcon
+          style="width: 50px"
           name="icon-calendar-lined"
           colour="default"
           id="calendar-icon"
@@ -51,26 +73,18 @@
             Monday 4th AUG
           </span>
         </div>
-        <li v-for="(item, index) in items" class="children-names">
-          {{ item.message }}
-        </li>
+        <Slider />
+        <div>
+          <RplButton id="action-buttons">Save</RplButton>
+          <RplButton id="action-buttons">Submit Attendance</RplButton>
+        </div>
       </RplNavCard>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-const items = ref([
-  { message: "Everett Friedman" },
-  { message: "Ethel Terry" },
-  { message: "Andrew Fisher" },
-  { message: "Jessie Montes" },
-  { message: "Bryan Erickson" },
-]);
-
-import { RplPrimaryNav } from "@dpc-sdp/ripple-ui-core/vue";
-import image from "../assets/images/vic-gov.png";
+import Slider from "../components/Slider.vue";
 import {
   RplNavCard,
   RplButton,
@@ -80,6 +94,13 @@ import {
 </script>
 
 <style>
+#action-buttons {
+  margin: 5rem 4rem 0 0;
+  width: 35rem;
+}
+.rpl-card__content {
+  max-width: 100rem;
+}
 .children-names {
   list-style-type: none;
 }
@@ -88,8 +109,9 @@ import {
   padding: 0;
   display: block;
 }
-.grey-line {
+.grey-line-attendance {
   border-bottom: 1px solid lightgray;
+  margin-bottom: 2rem;
 }
 #role-text {
   margin: 1rem 0;
