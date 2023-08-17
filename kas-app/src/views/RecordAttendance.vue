@@ -73,7 +73,7 @@
             Monday 4th AUG
           </span>
         </div>
-        <Slider />
+        <RecordCalendar />
         <div>
           <RplButton id="action-buttons">Save</RplButton>
           <RplButton id="action-buttons">Submit Attendance</RplButton>
@@ -84,13 +84,13 @@
 </template>
 
 <script setup>
-import Slider from "../components/Slider.vue";
 import {
   RplNavCard,
   RplButton,
   RplIcon,
   RplChip,
 } from "@dpc-sdp/ripple-ui-core/vue";
+import RecordCalendar from "../components/RecordCalendar.vue";
 </script>
 
 <style>

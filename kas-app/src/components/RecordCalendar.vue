@@ -34,7 +34,7 @@
         </td>
         <td colspan="9">
           <v-range-slider v-model="value" :id="item.name" strict
-            >hi something</v-range-slider
+            ></v-range-slider
           >
         </td>
       </tr>
