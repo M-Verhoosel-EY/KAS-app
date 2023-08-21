@@ -15,6 +15,7 @@
               </p>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="selected-button"
               >
                 <div class="grey-square"></div>
                 CBD
@@ -56,7 +57,7 @@
                 COVID-19 and boost customer confidence.
               </p>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="selected-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -160,12 +161,27 @@
               </p>
               <h3 class="rpl-type-h3-fixed">Add Students</h3>
               <div class="add-students">
-                <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                <img class="student-icon" src="../assets/images/avatar.jpeg" />
-                <img class="student-icon" src="../assets/images/avatar.jpeg" />
+                <a @click="removeUser(), addUser()" href="#" style="width: 50px"
+                  ><PlusIcon
+                    class="h-6 w-6 text-blue-250"
+                    style="color: #0052c2"
+                /></a>
+                <div
+                  v-for="(profile, index) in profiles"
+                  :key="profile.id"
+                  class="profile-item"
+                >
+                  <a
+                    @click="
+                      removeUser(index), addUser(profile.id, profile.name)
+                    "
+                    href="#"
+                    ><UserIcon style="color: #0052c2"
+                  /></a>
+                  <p class="rpl-type-label-small" style="text-align: center">
+                    {{ profile.name }}
+                  </p>
+                </div>
               </div>
               <hr />
               <div class="enrolled-heading">
@@ -173,40 +189,14 @@
                 <RplSearchBar variant="reverse" id="reverse" />
               </div>
               <div class="enrol-students">
-                <div class="avatar-card">
+                <div
+                  v-for="student in enrolled"
+                  :key="student.id"
+                  class="avatar-card"
+                >
                   <img class="avatar-img" src="../assets/images/avatar.jpeg" />
                   <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    Bobby Joe
-                  </p>
-                </div>
-                <div class="avatar-card">
-                  <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    Bobby Joe
-                  </p>
-                </div>
-                <div class="avatar-card">
-                  <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    Bobby Joe
-                  </p>
-                </div>
-                <div class="avatar-card">
-                  <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    Bobby Joe
-                  </p>
-                </div>
-                <div class="avatar-card">
-                  <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    Bobby Joe
-                  </p>
-                </div>
-                <div class="avatar-card">
-                  <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    Bobby Joe
+                    {{ student.name }}
                   </p>
                 </div>
               </div>
@@ -218,12 +208,70 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      profiles: [
+        {
+          id: 1,
+          name: "Everett Friedman",
+          completed: false,
+        },
+        {
+          id: 2,
+          name: "Ethel Terry",
+          completed: false,
+        },
+        {
+          id: 3,
+          name: "Andrew Fisher",
+          completed: false,
+        },
+        {
+          id: 4,
+          name: "Jessie Montes",
+          completed: false,
+        },
+        {
+          id: 5,
+          name: "Bryan Erickson",
+          completed: false,
+        },
+      ],
+      enrolled: [],
+    };
+  },
+  methods: {
+    removeUser(index) {
+      this.profiles.splice(index, 1);
+    },
+    addUser(id, name) {
+      this.enrolled.push({
+        id: id,
+        name: name,
+      });
+    },
+  },
+};
+</script>
+
 <script setup>
-import { RplIcon, RplSearchBar } from "@dpc-sdp/ripple-ui-core/vue";
+import { RplIcon, RplSearchBar, RplButton } from "@dpc-sdp/ripple-ui-core/vue";
+import { BeakerIcon, UserIcon, PlusIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <style>
 @media (min-width: 1024px) {
+  .profile-item {
+    margin-right: 2rem;
+    margin-left: 2rem;
+    width: 5rem;
+    align-items: center;
+  }
+  #selected-button {
+    background-color: #e6f5fd;
+  }
   .enrolment {
     min-height: 65vh;
     display: flex;
