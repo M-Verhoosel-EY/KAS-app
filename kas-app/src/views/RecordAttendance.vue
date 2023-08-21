@@ -26,6 +26,7 @@
         <button
           @click="selectClass('Class 1A')"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+          id="selected-button"
         >
           <div class="grey-square"></div>
           Class 1A

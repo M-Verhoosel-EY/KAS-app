@@ -11,7 +11,7 @@
             <th></th>
             <th></th>
             <th></th>
-            <th class="text-left">Total Hours</th>
+            <th class="text-left" style="text-align: center">Total Hours</th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,13 @@
               />
             </td>
             <td><RplButton label="Partial" id="partial-button" /></td>
-            <td class="rpl-type-label">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td
+              class="rpl-type-label rpl-type-weight-bold"
+              style="text-align: center"
+            >
               {{ attendance[index] }}
             </td>
           </tr>
