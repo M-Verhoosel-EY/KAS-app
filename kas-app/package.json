@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@dpc-sdp/ripple-ui-core": "^2.0.0",
+    "@heroicons/vue": "^2.0.18",
     "@vue/cli": "^5.0.8",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
