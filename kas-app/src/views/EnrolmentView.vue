@@ -317,7 +317,6 @@ export default {
 <script setup>
 import { RplIcon, RplSearchBar, RplButton } from "@dpc-sdp/ripple-ui-core/vue";
 import {
-  BeakerIcon,
   UserIcon,
   PlusIcon,
   EllipsisHorizontalIcon,

@@ -17,6 +17,7 @@
             url="https://vic.gov.au"
           />
           <RplChip
+            style="margin-top: 1.5rem"
             label="Detail B"
             variant="default"
             url="https://vic.gov.au"
@@ -66,18 +67,19 @@
           </p>
           <p>Year 1A</p>
         </ul>
-        <RplIcon
-          style="width: 50px"
-          name="icon-calendar-lined"
-          colour="default"
-          id="calendar-icon"
-        />
-        <div class="rpl-document__content">
-          <span
-            class="rpl-document__name rpl-type-p rpl-type-weight-bold rpl-u-focusable-inline"
-          >
-            Monday 4th AUG
-          </span>
+        <div style="margin-top: 4rem">
+          <div style="display: inline-block">
+            <CalendarDaysIcon
+              style="
+                color: #0052c2;
+                width: 4rem;
+                justify-content: center;
+                display: flex;
+                justify-content: center;
+              "
+            />
+          </div>
+          <DatePicker style="width: fit-content" />
         </div>
         <RecordCalendar />
         <div>
@@ -90,6 +92,7 @@
 </template>
 
 <script>
+import DatePicker from "../components/DatePicker.vue";
 export default {
   props: ["className"],
   data() {
@@ -113,6 +116,7 @@ import {
   RplChip,
 } from "@dpc-sdp/ripple-ui-core/vue";
 import RecordCalendar from "../components/RecordCalendar.vue";
+import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <style>
@@ -142,6 +146,7 @@ import RecordCalendar from "../components/RecordCalendar.vue";
   border-radius: 50%;
   display: inline-block;
   margin-right: 1rem;
+  margin-top: 2rem;
 }
 #test-name {
   display: inline-block;
