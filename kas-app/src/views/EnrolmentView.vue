@@ -173,7 +173,13 @@
                 >
                   <a
                     @click="
-                      removeUser(index), addUser(profile.id, profile.name)
+                      removeUser(index),
+                        addUser(
+                          profile.id,
+                          profile.name,
+                          profile.DOB,
+                          profile.ATSI
+                        )
                     "
                     href="#"
                     ><UserIcon style="color: #0052c2"
@@ -189,15 +195,60 @@
                 <RplSearchBar variant="reverse" id="reverse" />
               </div>
               <div class="enrol-students">
-                <div
-                  v-for="student in enrolled"
-                  :key="student.id"
-                  class="avatar-card"
-                >
-                  <img class="avatar-img" src="../assets/images/avatar.jpeg" />
-                  <p class="rpl-type-p rpl-type-weight-bold rpl-u-margin-t-2">
-                    {{ student.name }}
-                  </p>
+                <div class="rpl-table">
+                  <div class="rpl-table__scroll-container" tabindex="0">
+                    <table>
+                      <tbody>
+                        <tr v-for="student in enrolled" :key="enrolled.id">
+                          <td class="enrolled-cell-row">
+                            <div style="display: inline-block">
+                              <UserIcon style="color: #0052c2; width: 5rem" />
+                            </div>
+                            <div
+                              style="
+                                display: inline-block;
+                                vertical-align: top;
+                                margin-top: 2rem;
+                              "
+                            >
+                              <p
+                                class="rpl-type-label-small rpl-type-weight-bold"
+                              >
+                                {{ student.name }}
+                              </p>
+                            </div>
+                          </td>
+                          <td class="enrolled-cell-row">
+                            <p
+                              class="rpl-type-label-small rpl-type-weight-bold"
+                            >
+                              DOB
+                            </p>
+                            <p>{{ student.DOB }}</p>
+                          </td>
+                          <td class="enrolled-cell-row">
+                            <p
+                              class="rpl-type-label-small rpl-type-weight-bold"
+                            >
+                              ATSI
+                            </p>
+                            <p>{{ student.ATSI }}</p>
+                          </td>
+                          <td>
+                            <EllipsisHorizontalIcon
+                              style="
+                                color: #0052c2;
+                                width: 4rem;
+                                justify-content: center;
+                                display: flex;
+                                justify-content: center;
+                              "
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,28 +266,33 @@ export default {
       profiles: [
         {
           id: 1,
-          name: "Everett Friedman",
-          completed: false,
+          name: "Chloe Friedman",
+          DOB: "09/04/2019",
+          ATSI: "No",
         },
         {
           id: 2,
           name: "Ethel Terry",
-          completed: false,
+          DOB: "27/08/2019",
+          ATSI: "No",
         },
         {
           id: 3,
           name: "Andrew Fisher",
-          completed: false,
+          DOB: "30/10/2019",
+          ATSI: "Yes",
         },
         {
           id: 4,
           name: "Jessie Montes",
-          completed: false,
+          DOB: "12/02/2019",
+          ATSI: "No",
         },
         {
           id: 5,
           name: "Bryan Erickson",
-          completed: false,
+          DOB: "22/01/2019",
+          ATSI: "Yes",
         },
       ],
       enrolled: [],
@@ -246,10 +302,12 @@ export default {
     removeUser(index) {
       this.profiles.splice(index, 1);
     },
-    addUser(id, name) {
+    addUser(id, name, DOB, ATSI) {
       this.enrolled.push({
         id: id,
         name: name,
+        DOB: DOB,
+        ATSI: ATSI,
       });
     },
   },
@@ -258,11 +316,19 @@ export default {
 
 <script setup>
 import { RplIcon, RplSearchBar, RplButton } from "@dpc-sdp/ripple-ui-core/vue";
-import { BeakerIcon, UserIcon, PlusIcon } from "@heroicons/vue/24/solid";
+import {
+  BeakerIcon,
+  UserIcon,
+  PlusIcon,
+  EllipsisHorizontalIcon,
+} from "@heroicons/vue/24/solid";
 </script>
 
 <style>
 @media (min-width: 1024px) {
+  .enrolled-cell-row {
+    width: 30rem;
+  }
   .profile-item {
     margin-right: 2rem;
     margin-left: 2rem;
