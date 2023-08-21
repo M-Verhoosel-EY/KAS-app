@@ -8,61 +8,32 @@
             <th></th>
             <th></th>
             <th></th>
-            <th class="text-left">8.00am</th>
-            <th class="text-left">9.00am</th>
-            <th class="text-left">10.00am</th>
-            <th class="text-left">11.00am</th>
-            <th class="text-left">12.00pm</th>
-            <th class="text-left">1.00pm</th>
-            <th class="text-left">2.00pm</th>
-            <th class="text-left">3.00pm</th>
-            <th class="text-left">4.00pm</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th class="text-left">Total Hours</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colspan="2">Everett Friedman</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+          <tr v-for="(child, index) in children" :key="children.id">
+            <td colspan="2" class="rpl-type-label">{{ child.name }}</td>
+            <td>
+              <RplButton
+                label="Present"
+                id="present-button"
+                @click="present('6', index)"
+              />
             </td>
-          </tr>
-          <tr>
-            <td colspan="2">Ethel Terry</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+            <td>
+              <RplButton
+                label="Absent"
+                id="absent-button"
+                @click="absent('0', index)"
+              />
             </td>
-          </tr>
-          <tr>
-            <td colspan="2">Andrew Fisher</td>
-            <td><RplButton label="Present" id="present-button" /></td>
             <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">Jessie Montes</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">Bryan Erickson</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+            <td class="rpl-type-label">
+              {{ attendance[index] }}
             </td>
           </tr>
         </tbody>
@@ -75,37 +46,45 @@
 export default {
   data() {
     return {
-      value: [5, 85],
-      desserts: [
+      attendance: [, , , ,],
+      children: [
         {
-          name: "Everett Friedman",
-          calories: 159,
+          id: 1,
+          name: "Chloe Friedman",
+          hours: "0",
         },
         {
+          id: 2,
           name: "Ethel Terry",
-          calories: 237,
         },
         {
+          id: 3,
           name: "Andrew Fisher",
-          calories: 262,
         },
         {
+          id: 4,
           name: "Jessie Montes",
-          calories: 305,
         },
         {
+          id: 5,
           name: "Bryan Erickson",
-          calories: 356,
         },
       ],
     };
+  },
+  methods: {
+    present(hours, index) {
+      this.attendance[index] = hours;
+    },
+    absent(hours, index) {
+      this.attendance[index] = hours;
+    },
   },
 };
 </script>
 
 <script setup>
 import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
-import Slider from "./Slider.vue";
 </script>
 
 <style>
