@@ -4,65 +4,57 @@
       <table style="width: 400rem">
         <thead>
           <tr>
-            <th colspan="2">Name</th>
+            <th class="rpl-type-label" colspan="2">Name</th>
             <th></th>
             <th></th>
             <th></th>
-            <th class="text-left">8.00am</th>
-            <th class="text-left">9.00am</th>
-            <th class="text-left">10.00am</th>
-            <th class="text-left">11.00am</th>
-            <th class="text-left">12.00pm</th>
-            <th class="text-left">1.00pm</th>
-            <th class="text-left">2.00pm</th>
-            <th class="text-left">3.00pm</th>
-            <th class="text-left">4.00pm</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th class="rpl-type-label" style="text-align: center">
+              Total Hours
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colspan="2">Everett Friedman</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+          <tr v-for="(child, index) in children" :key="children.id">
+            <td colspan="2" class="rpl-type-label">{{ child.name }}</td>
+            <td>
+              <RplButton
+                label="Present"
+                id="present-button"
+                @click="present('6', index)"
+              />
             </td>
-          </tr>
-          <tr>
-            <td colspan="2">Ethel Terry</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+            <td>
+              <RplButton
+                label="Absent"
+                id="absent-button"
+                @click="absent('0', index)"
+              />
             </td>
-          </tr>
-          <tr>
-            <td colspan="2">Andrew Fisher</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+            <td>
+              <RplButton
+                label="Partial"
+                id="partial-button"
+                @click="partial(index), hourDifference(index)"
+              />
             </td>
-          </tr>
-          <tr>
-            <td colspan="2">Jessie Montes</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+            <td></td>
+            <td></td>
+            <td>
+              <div v-if="partialIsVisible[index]">
+                <p>Check In: 09:00</p>
+                <p>Check Out: 13:00</p>
+              </div>
             </td>
-          </tr>
-          <tr>
-            <td colspan="2">Bryan Erickson</td>
-            <td><RplButton label="Present" id="present-button" /></td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
-            <td><RplButton label="Absent" id="absent-button" /></td>
-            <td colspan="9">
-              <Slider />
+            <td></td>
+            <td
+              class="rpl-type-label rpl-type-weight-bold"
+              style="text-align: center"
+            >
+              {{ attendance[index] }}
             </td>
           </tr>
         </tbody>
@@ -75,37 +67,63 @@
 export default {
   data() {
     return {
-      value: [5, 85],
-      desserts: [
+      totalTime: "",
+      attendance: [, , , ,],
+      partialIsVisible: [false, false, false, false, false],
+      children: [
         {
-          name: "Everett Friedman",
-          calories: 159,
+          id: 1,
+          name: "Chloe Friedman",
         },
         {
+          id: 2,
           name: "Ethel Terry",
-          calories: 237,
         },
         {
+          id: 3,
           name: "Andrew Fisher",
-          calories: 262,
         },
         {
+          id: 4,
           name: "Jessie Montes",
-          calories: 305,
         },
         {
+          id: 5,
           name: "Bryan Erickson",
-          calories: 356,
         },
       ],
     };
+  },
+  methods: {
+    present(hours, index) {
+      this.attendance[index] = hours;
+      if (this.partialIsVisible[index]) {
+        this.partialIsVisible[index] = false;
+      }
+    },
+    absent(hours, index) {
+      this.attendance[index] = hours;
+      if (this.partialIsVisible[index]) {
+        this.partialIsVisible[index] = false;
+      }
+    },
+    partial(index) {
+      this.partialIsVisible[index] = !this.partialIsVisible[index];
+    },
+    hourDifference(index) {
+      let a = moment("2016-06-06T09:00:00");
+      let b = moment("2016-06-06T13:00:00");
+      a.format("DD/MM/YYYY hh:mm:ss");
+      this.totalTime = b.diff(a, "hours");
+      this.attendance[index] = this.totalTime;
+    },
   },
 };
 </script>
 
 <script setup>
 import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
-import Slider from "./Slider.vue";
+import moment from "moment";
 </script>
 
 <style>
