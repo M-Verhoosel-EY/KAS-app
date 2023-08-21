@@ -24,12 +24,14 @@
         </div>
         <div class="grey-line-attendance"></div>
         <button
+          @click="selectClass('Class 1A')"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>
           Class 1A
         </button>
         <button
+          @click="selectClass('Class 1B')"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>
@@ -50,14 +52,17 @@
       </RplNavCard>
     </div>
     <div id="class-content">
-      <RplNavCard title="Class 1A - Attendance">
+      <RplNavCard>
+        <h2>{{ className }} - Attendance</h2>
         <img
           src="../assets/images/profile-placeholder.jpeg"
           id="profile-image"
           width="120"
         />
         <ul id="test-name">
-          <p><strong>Teacher Name</strong></p>
+          <p>
+            <strong>{{ className }}</strong>
+          </p>
           <p>Year 1A</p>
         </ul>
         <RplIcon
@@ -82,6 +87,22 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["className"],
+  data() {
+    return {
+      className: "Class 1A",
+    };
+  },
+  methods: {
+    selectClass: function (name) {
+      this.className = name;
+    },
+  },
+};
+</script>
 
 <script setup>
 import {
