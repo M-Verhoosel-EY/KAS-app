@@ -4,14 +4,17 @@
       <table style="width: 400rem">
         <thead>
           <tr>
-            <th colspan="2">Name</th>
+            <th class="rpl-type-label" colspan="2">Name</th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
-            <th class="text-left" style="text-align: center">Total Hours</th>
+            <th></th>
+            <th class="rpl-type-label" style="text-align: center">
+              Total Hours
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -31,9 +34,21 @@
                 @click="absent('0', index)"
               />
             </td>
-            <td><RplButton label="Partial" id="partial-button" /></td>
+            <td>
+              <RplButton
+                label="Partial"
+                id="partial-button"
+                @click="partial(index), hourDifference(index)"
+              />
+            </td>
             <td></td>
             <td></td>
+            <td>
+              <div v-if="partialIsVisible[index]">
+                <p>Check In: 09:00</p>
+                <p>Check Out: 13:00</p>
+              </div>
+            </td>
             <td></td>
             <td
               class="rpl-type-label rpl-type-weight-bold"
@@ -52,12 +67,13 @@
 export default {
   data() {
     return {
+      totalTime: "",
       attendance: [, , , ,],
+      partialIsVisible: [false, false, false, false, false],
       children: [
         {
           id: 1,
           name: "Chloe Friedman",
-          hours: "0",
         },
         {
           id: 2,
@@ -81,9 +97,25 @@ export default {
   methods: {
     present(hours, index) {
       this.attendance[index] = hours;
+      if (this.partialIsVisible[index]) {
+        this.partialIsVisible[index] = false;
+      }
     },
     absent(hours, index) {
       this.attendance[index] = hours;
+      if (this.partialIsVisible[index]) {
+        this.partialIsVisible[index] = false;
+      }
+    },
+    partial(index) {
+      this.partialIsVisible[index] = !this.partialIsVisible[index];
+    },
+    hourDifference(index) {
+      let a = moment("2016-06-06T09:00:00");
+      let b = moment("2016-06-06T13:00:00");
+      a.format("DD/MM/YYYY hh:mm:ss");
+      this.totalTime = b.diff(a, "hours");
+      this.attendance[index] = this.totalTime;
     },
   },
 };
@@ -91,6 +123,7 @@ export default {
 
 <script setup>
 import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
+import moment from "moment";
 </script>
 
 <style>
