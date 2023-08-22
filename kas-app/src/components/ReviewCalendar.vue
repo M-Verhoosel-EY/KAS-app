@@ -15,21 +15,25 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2">Everett Friedman</td>
+            <td colspan="2" class="rpl-type-label">Everett Friedman</td>
             <td>
-              <RplButton
-                label="08:00-15:00"
-                id="present-button"
-                v-on:click="hello"
+              <DropDown
+                @changeCheckIn="ChangeInTime($event)"
+                @changeCheckOut="ChangeOutTime($event)"
+              />
+            </td>
+            <td>
+              <DropDown
+                @changeCheckIn="ChangeInTime($event)"
+                @changeCheckOut="ChangeOutTime($event)"
               />
             </td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td>
               <RplButton
-                label="35"
+                :label="totalTime"
                 variant="outlined"
                 id="total-hours-button"
               />
@@ -37,8 +41,18 @@
           </tr>
           <tr>
             <td colspan="2">Ethel Terry</td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
+            <td>
+              <DropDown
+                @changeCheckIn="ChangeInTime($event)"
+                @changeCheckOut="ChangeOutTime($event)"
+              />
+            </td>
+            <td>
+              <DropDown
+                @changeCheckIn="ChangeInTime($event)"
+                @changeCheckOut="ChangeOutTime($event)"
+              />
+            </td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
@@ -115,14 +129,14 @@
 
 <script>
 export default {
-  methods: {
-    hello() {
-      return "test";
-    },
-  },
   data() {
     return {
-      value: [5, 80],
+      checkInTime: "00:00",
+      checkOutTime: "00:00",
+      totalToSubtract: "00:00",
+      totalToAdd: "00:00",
+      totalTime: "00:00",
+      totalWeekTime: "00:00",
       days: [
         {
           name: "Everett Friedman",
@@ -150,11 +164,36 @@ export default {
       ],
     };
   },
+  methods: {
+    ChangeInTime(checkInTime) {
+      this.checkInTime = checkInTime;
+    },
+    ChangeOutTime(checkOutTime) {
+      this.checkOutTime = checkOutTime;
+    },
+    hourDifference() {
+      let a = moment(`2016-06-06T${this.checkInTime}`);
+      let b = moment(`2016-06-06T${this.checkOutTime}`);
+      a.format("DD/MM/YYYY hh:mm:ss");
+      this.totalTime = b.diff(a, "hours");
+      console.log(this.totalTime);
+    },
+  },
+  watch: {
+    checkInTime() {
+      this.hourDifference();
+    },
+    checkOutTime() {
+      this.hourDifference();
+    },
+  },
 };
 </script>
 
 <script setup>
 import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
+import DropDown from "./DropDown.vue";
+import moment from "moment";
 </script>
 
 <style>
