@@ -41,24 +41,15 @@
           </tr>
           <tr>
             <td colspan="2">Ethel Terry</td>
-            <td>
+            <td v-for="(day, index) in testArray" :key="day.id">
               <DropDown
-                @changeCheckIn="ChangeInTime($event)"
-                @changeCheckOut="ChangeOutTime($event)"
+                @changeCheckIn="ChangeInTime($event), passIndex(index)"
+                @changeCheckOut="ChangeOutTime($event), passIndex(index)"
               />
             </td>
-            <td>
-              <DropDown
-                @changeCheckIn="ChangeInTime($event)"
-                @changeCheckOut="ChangeOutTime($event)"
-              />
-            </td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td>
               <RplButton
-                label="35"
+                :label="sumHours"
                 variant="outlined"
                 id="total-hours-button"
               />
@@ -66,7 +57,13 @@
           </tr>
           <tr>
             <td colspan="2">Andrew Fisher</td>
-            <td><RplButton label="ABSENT" id="absent-button" /></td>
+            <td>
+              <RplButton
+                label="ABSENT"
+                id="absent-button"
+                @click="SumHours()"
+              />
+            </td>
             <td><RplButton label="ABSENT" id="absent-button" /></td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td><RplButton label="08:00-15:00" id="present-button" /></td>
@@ -133,10 +130,12 @@ export default {
     return {
       checkInTime: "00:00",
       checkOutTime: "00:00",
-      totalToSubtract: "00:00",
-      totalToAdd: "00:00",
       totalTime: "00:00",
-      totalWeekTime: "00:00",
+      totalHours: 0,
+      sumHours: 0,
+      totalWeekTime: 0,
+      dayOfWeek: 0,
+      index: 0,
       days: [
         {
           name: "Everett Friedman",
@@ -162,6 +161,13 @@ export default {
           mon: "08:00 - 15:00",
         },
       ],
+      testArray: [
+        { total: 0, id: 1 },
+        { total: 0, id: 2 },
+        { total: 0, id: 3 },
+        { total: 0, id: 4 },
+        { total: 0, id: 5 },
+      ],
     };
   },
   methods: {
@@ -171,26 +177,45 @@ export default {
     ChangeOutTime(checkOutTime) {
       this.checkOutTime = checkOutTime;
     },
-    hourDifference() {
+    hourDifference(index) {
       let a = moment(`2016-06-06T${this.checkInTime}`);
       let b = moment(`2016-06-06T${this.checkOutTime}`);
       a.format("DD/MM/YYYY hh:mm:ss");
       this.totalTime = b.diff(a, "hours");
       console.log(this.totalTime);
+      console.log(index);
+      this.passIndex(index);
+    },
+    passIndex(index) {
+      this.index = index;
+      console.log("value of index", index);
+      console.log((this.testArray[index].total = this.totalTime));
+      console.log(this.testArray);
+      this.showHours();
+    },
+    showHours() {
+      let sum = 0;
+      this.testArray.forEach((item) => {
+        console.log("item.total", item.total);
+        sum += item.total;
+      });
+      console.log("value of sum", sum);
+      this.sumHours = sum;
     },
   },
   watch: {
     checkInTime() {
-      this.hourDifference();
+      this.hourDifference(this.index);
     },
     checkOutTime() {
-      this.hourDifference();
+      this.hourDifference(this.index);
     },
   },
 };
 </script>
 
 <script setup>
+import { ref } from "vue";
 import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
 import DropDown from "./DropDown.vue";
 import moment from "moment";
