@@ -15,95 +15,113 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2" class="rpl-type-label">Everett Friedman</td>
-            <td v-for="(day, index) in everettArray" :key="day.id">
+            <td colspan="2" class="rpl-type-label">Chloe Friedman</td>
+            <td v-for="(day, index) in chloeAttendance" :key="day.id">
               <DropDown
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
-                  ChangeInTime($event), passIndex(index, everettArray)
+                  ChangeInTime($event), passIndex(index, chloeAttendance)
                 "
                 @changeCheckOut="
-                  ChangeOutTime($event), passIndex(index, everettArray)
+                  ChangeOutTime($event), passIndex(index, chloeAttendance)
                 "
               />
             </td>
             <td>
               <RplButton
-                :label="everettArray[0].summedHours"
+                id="1A"
+                v-bind:style="[
+                  chloeAttendance[0].summedHours >= 30
+                    ? { borderColor: '#74dc44' }
+                    : { borderColor: 'black' },
+                ]"
+                :label="chloeAttendance[0].summedHours"
                 variant="outlined"
-                id="total-hours-button"
+                style="width: 15rem; height: 5rem; color: black"
               />
             </td>
           </tr>
           <tr>
             <td colspan="2" class="rpl-type-label">Ethel Terry</td>
-            <td v-for="(day, index) in ethelArray" :key="day.id">
+            <td v-for="(day, index) in ethelAttendance" :key="day.id">
               <DropDown
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
-                  ChangeInTime($event), passIndex(index, ethelArray)
+                  ChangeInTime($event), passIndex(index, ethelAttendance)
                 "
                 @changeCheckOut="
-                  ChangeOutTime($event), passIndex(index, ethelArray)
+                  ChangeOutTime($event), passIndex(index, ethelAttendance)
                 "
               />
             </td>
             <td>
               <RplButton
-                :label="ethelArray[0].summedHours"
+                :label="ethelAttendance[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
               />
             </td>
           </tr>
           <tr>
-            <td colspan="2">Andrew Fisher</td>
-            <td>
-              <RplButton
-                label="ABSENT"
-                id="absent-button"
-                @click="SumHours()"
+            <td colspan="2" class="rpl-type-label">Andrew Fisher</td>
+            <td v-for="(day, index) in andrewAttendance" :key="day.id">
+              <DropDown
+                v-bind:style="[{ backgroundColor: day.color }]"
+                @changeCheckIn="
+                  ChangeInTime($event), passIndex(index, andrewAttendance)
+                "
+                @changeCheckOut="
+                  ChangeOutTime($event), passIndex(index, andrewAttendance)
+                "
               />
             </td>
-            <td><RplButton label="ABSENT" id="absent-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td>
               <RplButton
-                label="21"
-                variant="outlined"
-                id="partial-total-hours-button"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">Jessie Montes</td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td>
-              <RplButton
-                label="35"
+                :label="andrewAttendance[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
               />
             </td>
           </tr>
           <tr>
-            <td colspan="2">Bryan Erickson</td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-13:00" id="partial-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
+            <td colspan="2" class="rpl-type-label">Jessie Montes</td>
+            <td v-for="(day, index) in jessieAttendance" :key="day.id">
+              <DropDown
+                v-bind:style="[{ backgroundColor: day.color }]"
+                @changeCheckIn="
+                  ChangeInTime($event), passIndex(index, jessieAttendance)
+                "
+                @changeCheckOut="
+                  ChangeOutTime($event), passIndex(index, jessieAttendance)
+                "
+              />
+            </td>
             <td>
               <RplButton
-                label="32"
+                :label="jessieAttendance[0].summedHours"
                 variant="outlined"
-                id="partial-total-hours-button"
+                id="total-hours-button"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="rpl-type-label">Bryan Erickson</td>
+            <td v-for="(day, index) in bryanAttendance" :key="day.id">
+              <DropDown
+                v-bind:style="[{ backgroundColor: day.color }]"
+                @changeCheckIn="
+                  ChangeInTime($event), passIndex(index, bryanAttendance)
+                "
+                @changeCheckOut="
+                  ChangeOutTime($event), passIndex(index, bryanAttendance)
+                "
+              />
+            </td>
+            <td>
+              <RplButton
+                :label="bryanAttendance[0].summedHours"
+                variant="outlined"
+                id="total-hours-button"
               />
             </td>
           </tr>
@@ -140,39 +158,35 @@ export default {
       dayOfWeek: 0,
       index: 0,
       child: "testChild",
-      days: [
-        {
-          name: "Everett Friedman",
-          mon: "08:00 - 15:00",
-          tues: "08:00 - 14:00",
-          type: "present-button",
-        },
-        {
-          name: "Ethel Terry",
-          mon: "08:00 - 12:00",
-          type: "partial-button",
-        },
-        {
-          name: "Andrew Fisher",
-          mon: "08:00 - 15:00",
-        },
-        {
-          name: "Jessie Montes",
-          mon: "08:00 - 15:00",
-        },
-        {
-          name: "Bryan Erickson",
-          mon: "08:00 - 15:00",
-        },
-      ],
-      ethelArray: [
+      ethelAttendance: [
         { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
         { total: 0, id: 2, attendance: "", color: "" },
         { total: 0, id: 3, attendance: "", color: "" },
         { total: 0, id: 4, attendance: "", color: "" },
         { total: 0, id: 5, attendance: "", color: "" },
       ],
-      everettArray: [
+      chloeAttendance: [
+        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
+        { total: 0, id: 2, attendance: "", color: "" },
+        { total: 0, id: 3, attendance: "", color: "" },
+        { total: 0, id: 4, attendance: "", color: "" },
+        { total: 0, id: 5, attendance: "", color: "" },
+      ],
+      andrewAttendance: [
+        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
+        { total: 0, id: 2, attendance: "", color: "" },
+        { total: 0, id: 3, attendance: "", color: "" },
+        { total: 0, id: 4, attendance: "", color: "" },
+        { total: 0, id: 5, attendance: "", color: "" },
+      ],
+      jessieAttendance: [
+        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
+        { total: 0, id: 2, attendance: "", color: "" },
+        { total: 0, id: 3, attendance: "", color: "" },
+        { total: 0, id: 4, attendance: "", color: "" },
+        { total: 0, id: 5, attendance: "", color: "" },
+      ],
+      bryanAttendance: [
         { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
         { total: 0, id: 2, attendance: "", color: "" },
         { total: 0, id: 3, attendance: "", color: "" },
