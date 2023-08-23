@@ -33,7 +33,7 @@
           Class 1A
         </button>
         <button
-          @click="selectClass('Class 1B')"
+          id="ignore-hover-button"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>
@@ -41,12 +41,14 @@
         </button>
         <button
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+          id="ignore-hover-button"
         >
           <div class="grey-square"></div>
           Class 1C
         </button>
         <button
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+          id="ignore-hover-button"
         >
           <div class="grey-square"></div>
           Class 2A
@@ -120,6 +122,9 @@ import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <style>
+#ignore-hover-button:hover {
+  background-color: white;
+}
 #action-buttons {
   margin: 5rem 4rem 0 0;
   width: 35rem;

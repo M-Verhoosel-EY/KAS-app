@@ -22,8 +22,8 @@ import image from "../assets/images/vic-gov.png";
         :items="[
           {
             id: '1',
-            text: 'Login',
-            url: '/login',
+            text: 'Welcome',
+            url: '/welcome',
           },
           {
             id: '2',

@@ -19,24 +19,28 @@
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Frankston
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Mulgrave
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Fitzroy
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Doncaster
@@ -67,7 +71,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -82,7 +86,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -97,7 +101,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -112,7 +116,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -127,7 +131,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -336,8 +340,11 @@ import {
   #selected-button {
     background-color: #e6f5fd;
   }
+  #ignore-hover-button:hover {
+    background-color: white;
+  }
   .enrolment {
-    min-height: 65vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
   }
