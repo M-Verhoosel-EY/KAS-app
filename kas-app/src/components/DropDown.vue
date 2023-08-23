@@ -2,8 +2,7 @@
   <div>
     <vue-file-toolbar-menu
       :content="my_menu"
-      :menu_height="4"
-      style="justify-content: center; width: 20rem"
+      style="width: 20rem; justify-content: center"
     />
   </div>
 </template>
@@ -12,24 +11,47 @@
 import VueFileToolbarMenu from "vue-file-toolbar-menu";
 
 export default {
+  props: ["title", "childArray", "dayIndex", "checkOutChild"],
   components: { VueFileToolbarMenu },
 
   data() {
-    return { checkin: "Checkin", checkout: "Checkout" };
+    return {
+      checkin: "09:00",
+      checkout: "15:00",
+      outAbsent: "ABSENT",
+    };
   },
   methods: {
     passCheckInEvent(timeIn) {
-      this.$emit("changeCheckIn", timeIn);
+      console.log("time in value: ", timeIn);
+      this.$emit("changeCheckIn", {
+        timeIn: timeIn,
+        timeOut: this.checkOutChild,
+        childArray: this.childArray,
+        dayIndex: this.dayIndex,
+      });
       this.checkin = timeIn;
     },
-    passCheckOutEvent(timeOut) {
-      this.$emit("changeCheckOut", timeOut);
+    passCheckOutEvent(timeOut, timeIn) {
+      /* if ((timeIn = "ABSENT")) {
+        this.title = "";
+      } */
+      this.$emit("changeCheckOut", {
+        timeIn: this.title,
+        timeOut: timeOut,
+        childArray: this.childArray,
+        dayIndex: this.dayIndex,
+      });
       this.checkout = timeOut;
     },
     handleAbsent(absent) {
-      this.$emit("absentAttendance", absent);
-      this.checkin = absent;
+      //this.$emit("absentAttendance", absent);
+      this.checkin = "";
       this.checkout = "";
+    },
+    handleAbsentOut(absent) {
+      this.checkout = "";
+      this.checkin = "";
     },
   },
 
@@ -37,7 +59,8 @@ export default {
     my_menu() {
       return [
         {
-          text: this.checkin,
+          menu_height: 225,
+          text: this.title,
           menu: [
             {
               text: "08:00",
@@ -56,12 +79,15 @@ export default {
               click: () => {
                 this.handleAbsent("ABSENT");
                 this.passCheckInEvent("ABSENT");
+                this.passCheckOutEvent("ABSENT");
               },
             },
           ],
         },
         {
-          text: this.checkout,
+          menu_height: 225,
+          color: "red",
+          text: this.checkOutChild,
           menu: [
             {
               text: "08:00",
@@ -75,7 +101,14 @@ export default {
             { text: "14:00", click: () => this.passCheckOutEvent("14:00") },
             { text: "15:00", click: () => this.passCheckOutEvent("15:00") },
             { text: "16:00", click: () => this.passCheckOutEvent("16:00") },
-            { text: "ABSENT", click: () => this.handleAbsent("ABSENT") },
+            {
+              text: "ABSENT",
+              click: () => {
+                this.handleAbsentOut("ABSENT");
+                this.passCheckInEvent("ABSENT");
+                this.passCheckOutEvent("ABSENT");
+              },
+            },
           ],
         },
       ];
@@ -83,3 +116,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.bar[data-v-55e77a37] .bar-button.open:hover {
+  color: var(--bar-button-open-color, #0052c2);
+  background: var(--bar-button-open-bkg, rgba(0, 0, 0, 0.12));
+}
+</style>

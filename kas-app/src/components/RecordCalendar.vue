@@ -22,21 +22,21 @@
             <td colspan="2" class="rpl-type-label">{{ child.name }}</td>
             <td>
               <RplButton
-                label="Present"
+                label="PRESENT"
                 id="present-button"
                 @click="present('6', index)"
               />
             </td>
             <td>
               <RplButton
-                label="Absent"
+                label="ABSENT"
                 id="absent-button"
                 @click="absent('0', index)"
               />
             </td>
             <td>
               <RplButton
-                label="Partial"
+                label="PARTIAL"
                 id="partial-button"
                 @click="partial(index), hourDifference(index)"
               />
@@ -126,7 +126,7 @@ import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
 import moment from "moment";
 </script>
 
-<style>
+<style scoped>
 @media (min-width: 1024px) {
   .review-attendance {
     min-height: 80vh;
@@ -155,5 +155,33 @@ import moment from "moment";
 }
 .v-table__wrapper {
   width: fit-content;
+}
+#present-button {
+  background-color: #74dc44;
+  border-color: #74dc44;
+  color: black;
+  width: 15rem;
+}
+#total-hours-button {
+  color: black;
+  border-color: #74dc44;
+  width: 15rem;
+}
+#partial-total-hours-button {
+  color: black;
+  border-color: #ffeb3b;
+  width: 15rem;
+}
+#absent-button {
+  background-color: #ff9d9d;
+  border-color: #fd9d9d;
+  color: black;
+  width: 15rem;
+}
+#partial-button {
+  background-color: #f9e062;
+  border-color: #f9e062;
+  width: 15rem;
+  color: black;
 }
 </style>

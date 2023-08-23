@@ -5,19 +5,26 @@
         <thead>
           <tr>
             <th colspan="2">Name</th>
-            <th id="column-header-text">MON</th>
-            <th id="column-header-text" style="text-align: center">TUES</th>
-            <th id="column-header-text">WED</th>
-            <th id="column-header-text">THUR</th>
-            <th id="column-header-text">FRI</th>
+            <th id="column-header-text">Monday</th>
+            <th id="column-header-text" style="text-align: center">Tuesday</th>
+            <th id="column-header-text">Wednesday</th>
+            <th id="column-header-text">Thursday</th>
+            <th id="column-header-text">Friday</th>
             <th id="column-header-text">Total Hours</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td colspan="2" class="rpl-type-label">Chloe Friedman</td>
+            <td colspan="2" class="rpl-type-label" style="width: 10rem">
+              Chloe Friedman
+            </td>
             <td v-for="(day, index) in chloeAttendance" :key="day.id">
               <DropDown
+                v-bind:title="chloeAttendance[index].title"
+                v-bind:checkOutChild="chloeAttendance[index].checkOutChild"
+                v-bind:childArray="chloeAttendance"
+                v-bind:dayIndex="index"
+                id="dropdown"
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
                   ChangeInTime($event), passIndex(index, chloeAttendance)
@@ -33,7 +40,7 @@
                 v-bind:style="[
                   chloeAttendance[0].summedHours >= 30
                     ? { borderColor: '#74dc44' }
-                    : { borderColor: 'black' },
+                    : { borderColor: '#ffeb3b' },
                 ]"
                 :label="chloeAttendance[0].summedHours"
                 variant="outlined"
@@ -45,6 +52,11 @@
             <td colspan="2" class="rpl-type-label">Ethel Terry</td>
             <td v-for="(day, index) in ethelAttendance" :key="day.id">
               <DropDown
+                v-bind:title="ethelAttendance[index].title"
+                v-bind:checkOutChild="ethelAttendance[index].checkOutChild"
+                v-bind:childArray="ethelAttendance"
+                v-bind:dayIndex="index"
+                id="dropdown"
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
                   ChangeInTime($event), passIndex(index, ethelAttendance)
@@ -56,6 +68,11 @@
             </td>
             <td>
               <RplButton
+                v-bind:style="[
+                  ethelAttendance[0].summedHours >= 30
+                    ? { borderColor: '#74dc44' }
+                    : { borderColor: '#ffeb3b' },
+                ]"
                 :label="ethelAttendance[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
@@ -66,6 +83,11 @@
             <td colspan="2" class="rpl-type-label">Andrew Fisher</td>
             <td v-for="(day, index) in andrewAttendance" :key="day.id">
               <DropDown
+                v-bind:title="andrewAttendance[index].title"
+                v-bind:checkOutChild="andrewAttendance[index].checkOutChild"
+                v-bind:childArray="andrewAttendance"
+                v-bind:dayIndex="index"
+                id="dropdown"
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
                   ChangeInTime($event), passIndex(index, andrewAttendance)
@@ -77,6 +99,11 @@
             </td>
             <td>
               <RplButton
+                v-bind:style="[
+                  andrewAttendance[0].summedHours >= 30
+                    ? { borderColor: '#74dc44' }
+                    : { borderColor: '#ffeb3b' },
+                ]"
                 :label="andrewAttendance[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
@@ -87,6 +114,11 @@
             <td colspan="2" class="rpl-type-label">Jessie Montes</td>
             <td v-for="(day, index) in jessieAttendance" :key="day.id">
               <DropDown
+                v-bind:title="jessieAttendance[index].title"
+                v-bind:checkOutChild="jessieAttendance[index].checkOutChild"
+                v-bind:childArray="jessieAttendance"
+                v-bind:dayIndex="index"
+                id="dropdown"
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
                   ChangeInTime($event), passIndex(index, jessieAttendance)
@@ -98,6 +130,11 @@
             </td>
             <td>
               <RplButton
+                v-bind:style="[
+                  jessieAttendance[0].summedHours >= 30
+                    ? { borderColor: '#74dc44' }
+                    : { borderColor: '#ffeb3b' },
+                ]"
                 :label="jessieAttendance[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
@@ -108,6 +145,11 @@
             <td colspan="2" class="rpl-type-label">Bryan Erickson</td>
             <td v-for="(day, index) in bryanAttendance" :key="day.id">
               <DropDown
+                v-bind:title="bryanAttendance[index].title"
+                v-bind:checkOutChild="bryanAttendance[index].checkOutChild"
+                v-bind:childArray="bryanAttendance"
+                v-bind:dayIndex="index"
+                id="dropdown"
                 v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="
                   ChangeInTime($event), passIndex(index, bryanAttendance)
@@ -119,6 +161,11 @@
             </td>
             <td>
               <RplButton
+                v-bind:style="[
+                  bryanAttendance[0].summedHours >= 30
+                    ? { borderColor: '#74dc44' }
+                    : { borderColor: '#ffeb3b' },
+                ]"
                 :label="bryanAttendance[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
@@ -145,12 +192,17 @@
 
 <script>
 export default {
+  name: "ReviewCalendar",
+  components: {
+    DropDown,
+  },
   data() {
     return {
-      checkInTime: "00:00",
-      checkOutTime: "00:00",
+      checkInTime: "09:00",
+      checkOutTime: "15:00",
       totalTime: "00:00",
       attended: "#74dc44",
+      partial: "#ffeb3b",
       colorIndicator: "",
       totalHours: 0,
       sumHours: 0,
@@ -159,53 +211,237 @@ export default {
       index: 0,
       child: "testChild",
       ethelAttendance: [
-        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
-        { total: 0, id: 2, attendance: "", color: "" },
-        { total: 0, id: 3, attendance: "", color: "" },
-        { total: 0, id: 4, attendance: "", color: "" },
-        { total: 0, id: 5, attendance: "", color: "" },
+        {
+          total: 4,
+          id: 1,
+          attendance: "partial",
+          color: "#ffeb3b",
+          title: "09:00",
+          checkOutChild: "14:00",
+          summedHours: 23,
+        },
+        {
+          total: 6,
+          id: 2,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 3,
+          attendance: "partial",
+          color: "#ffeb3b",
+          title: "11:00",
+          checkOutChild: "14:00",
+        },
+        {
+          total: 6,
+          id: 4,
+          attendance: "partial",
+          color: "#ffeb3b",
+          title: "10:00",
+          checkOutChild: "13:00",
+        },
+        {
+          total: 6,
+          id: 5,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
       ],
       chloeAttendance: [
-        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
-        { total: 0, id: 2, attendance: "", color: "" },
-        { total: 0, id: 3, attendance: "", color: "" },
-        { total: 0, id: 4, attendance: "", color: "" },
-        { total: 0, id: 5, attendance: "", color: "" },
+        {
+          total: 6,
+          id: 1,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+          summedHours: 30,
+        },
+        {
+          total: 6,
+          id: 2,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 3,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 4,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 5,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
       ],
       andrewAttendance: [
-        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
-        { total: 0, id: 2, attendance: "", color: "" },
-        { total: 0, id: 3, attendance: "", color: "" },
-        { total: 0, id: 4, attendance: "", color: "" },
-        { total: 0, id: 5, attendance: "", color: "" },
+        {
+          total: 6,
+          id: 1,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+          summedHours: 24,
+        },
+        {
+          total: 0,
+          id: 2,
+          attendance: "absent",
+          color: "#ff9d9d",
+          title: "ABSENT",
+          checkOutChild: "",
+        },
+        {
+          total: 6,
+          id: 3,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 4,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 5,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
       ],
       jessieAttendance: [
-        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
-        { total: 0, id: 2, attendance: "", color: "" },
-        { total: 0, id: 3, attendance: "", color: "" },
-        { total: 0, id: 4, attendance: "", color: "" },
-        { total: 0, id: 5, attendance: "", color: "" },
+        {
+          total: 3,
+          id: 1,
+          attendance: "partial",
+          color: "#ffeb3b",
+          title: "09:00",
+          checkOutChild: "12:00",
+          summedHours: 23,
+        },
+        {
+          total: 6,
+          id: 2,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 3,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 4,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 4,
+          id: 5,
+          attendance: "attended",
+          color: "#ffeb3b",
+          title: "09:00",
+          checkOutChild: "13:00",
+        },
       ],
       bryanAttendance: [
-        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
-        { total: 0, id: 2, attendance: "", color: "" },
-        { total: 0, id: 3, attendance: "", color: "" },
-        { total: 0, id: 4, attendance: "", color: "" },
-        { total: 0, id: 5, attendance: "", color: "" },
+        {
+          total: 6,
+          id: 1,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+          summedHours: 18,
+        },
+        {
+          total: 6,
+          id: 2,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 6,
+          id: 3,
+          attendance: "attended",
+          color: "#74dc44",
+          title: "09:00",
+          checkOutChild: "15:00",
+        },
+        {
+          total: 0,
+          id: 4,
+          attendance: "absent",
+          color: "#ff9d9d",
+          title: "ABSENT",
+          checkOutChild: "",
+        },
+        {
+          total: 0,
+          id: 5,
+          attendance: "absent",
+          color: "#ff9d9d",
+          title: "ABSENT",
+          checkOutChild: "",
+        },
       ],
     };
   },
   methods: {
-    ChangeInTime(checkInTime) {
-      this.checkInTime = checkInTime;
+    ChangeInTime({ timeIn, childArray, dayIndex, timeOut }) {
+      childArray[dayIndex].title = timeIn;
+      childArray[dayIndex].checkOutChild = timeOut;
+      this.checkInTime = timeIn;
+      this.checkOutTime = timeOut;
     },
-    ChangeOutTime(checkOutTime) {
-      this.checkOutTime = checkOutTime;
+    ChangeOutTime({ timeOut, childArray, dayIndex, timeIn }) {
+      childArray[dayIndex].title = timeIn;
+      childArray[dayIndex].checkOutChild = timeOut;
+      this.checkInTime = timeIn;
+      this.checkOutTime = timeOut;
     },
     handleAbsent() {},
     hourDifference(index, child) {
-      console.log("value of child in hour difference: ", child);
-      console.log("checkInTime: ", this.checkInTime);
       let a = moment(`2016-06-06T${this.checkInTime}`);
       let b = moment(`2016-06-06T${this.checkOutTime}`);
       a.format("DD/MM/YYYY hh:mm:ss");
@@ -226,10 +462,9 @@ export default {
       this.showHours(index, child);
     },
     showHours(newValue, child) {
-      console.log("value of child in show hours", child[0].summedHours);
+      console.log("value of child in show hours", child);
       let sum = 0;
       this.child.forEach((item, index) => {
-        console.log("index in forEach: ", index);
         sum += item.total;
         if (newValue === index) {
           if (this.child[newValue].total > 5) {
@@ -242,7 +477,7 @@ export default {
             this.child[newValue].attendance = "partial";
             this.child[newValue].color = "#ffeb3b";
           } else if (this.child[newValue].total < 0) {
-            this.child[newValue].color = "white";
+            this.child[newValue].color = "rgba(0, 0, 0, 0.12)";
           } else {
             this.child[newValue].attendance = "absent";
             this.child[newValue].color = "#ff9d9d";
@@ -250,8 +485,6 @@ export default {
         }
       });
       this.child[0].summedHours = sum;
-      //this.sumHours = sum;
-      console.log("total hours: ", this.child[0].summedHours);
     },
   },
   watch: {
@@ -266,13 +499,16 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "vue";
 import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
 import DropDown from "./DropDown.vue";
 import moment from "moment";
 </script>
 
-<style>
+<style scoped>
+#dropdown {
+  border-radius: 4px;
+  padding: 0.5rem;
+}
 #column-header-text {
   text-align: center;
 }
@@ -280,32 +516,10 @@ import moment from "moment";
 #child-name {
   width: 15rem;
 }
-#present-button {
-  background-color: #74dc44;
-  border-color: #74dc44;
-  color: black;
-  width: 15rem;
-}
 #total-hours-button {
   color: black;
-  border-color: #74dc44;
+  border-color: black;
   width: 15rem;
-}
-#partial-total-hours-button {
-  color: black;
-  border-color: #ffeb3b;
-  width: 15rem;
-}
-#absent-button {
-  background-color: #ff9d9d;
-  border-color: #fd9d9d;
-  color: black;
-  width: 15rem;
-}
-#partial-button {
-  background-color: #f9e062;
-  border-color: #f9e062;
-  width: 15rem;
-  color: black;
+  height: 5rem;
 }
 </style>

@@ -21,8 +21,13 @@ export default {
   <div class="app-screen">
     <Navigation id="navbar" />
   </div>
+  <ModalsContainer />
   <RouterView />
 </template>
+
+<script setup>
+import { ModalsContainer } from "vue-final-modal";
+</script>
 
 <style scoped>
 .app-screen {
