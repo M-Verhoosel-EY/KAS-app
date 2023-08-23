@@ -26,6 +26,11 @@ export default {
       this.$emit("changeCheckOut", timeOut);
       this.checkout = timeOut;
     },
+    handleAbsent(absent) {
+      this.$emit("absentAttendance", absent);
+      this.checkin = absent;
+      this.checkout = "";
+    },
   },
 
   computed: {
@@ -46,7 +51,13 @@ export default {
             { text: "14:00", click: () => this.passCheckInEvent("14:00") },
             { text: "15:00", click: () => this.passCheckInEvent("15:00") },
             { text: "16:00", click: () => this.passCheckInEvent("16:00") },
-            { text: "ABSENT", click: () => this.passCheckInEvent("ABSENT") },
+            {
+              text: "ABSENT",
+              click: () => {
+                this.handleAbsent("ABSENT");
+                this.passCheckInEvent("ABSENT");
+              },
+            },
           ],
         },
         {
@@ -64,7 +75,7 @@ export default {
             { text: "14:00", click: () => this.passCheckOutEvent("14:00") },
             { text: "15:00", click: () => this.passCheckOutEvent("15:00") },
             { text: "16:00", click: () => this.passCheckOutEvent("16:00") },
-            { text: "ABSENT", click: () => this.passCheckOutEvent("ABSENT") },
+            { text: "ABSENT", click: () => this.handleAbsent("ABSENT") },
           ],
         },
       ];

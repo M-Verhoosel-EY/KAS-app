@@ -40,9 +40,10 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2">Ethel Terry</td>
-            <td v-for="(day, index) in testArray" :key="day.id">
+            <td colspan="2" class="rpl-type-label">Ethel Terry</td>
+            <td v-for="(day, index) in ethelArray" :key="day.id">
               <DropDown
+                v-bind:style="[{ backgroundColor: day.color }]"
                 @changeCheckIn="ChangeInTime($event), passIndex(index)"
                 @changeCheckOut="ChangeOutTime($event), passIndex(index)"
               />
@@ -131,6 +132,8 @@ export default {
       checkInTime: "00:00",
       checkOutTime: "00:00",
       totalTime: "00:00",
+      attended: "#74dc44",
+      colorIndicator: "",
       totalHours: 0,
       sumHours: 0,
       totalWeekTime: 0,
@@ -161,7 +164,14 @@ export default {
           mon: "08:00 - 15:00",
         },
       ],
-      testArray: [
+      ethelArray: [
+        { total: 0, id: 1, attendance: "", color: "" },
+        { total: 0, id: 2, attendance: "", color: "" },
+        { total: 0, id: 3, attendance: "", color: "" },
+        { total: 0, id: 4, attendance: "", color: "" },
+        { total: 0, id: 5, attendance: "", color: "" },
+      ],
+      everettArray: [
         { total: 0, id: 1 },
         { total: 0, id: 2 },
         { total: 0, id: 3 },
@@ -177,11 +187,17 @@ export default {
     ChangeOutTime(checkOutTime) {
       this.checkOutTime = checkOutTime;
     },
+    handleAbsent() {},
     hourDifference(index) {
+      console.log("checkInTime: ", this.checkInTime);
       let a = moment(`2016-06-06T${this.checkInTime}`);
       let b = moment(`2016-06-06T${this.checkOutTime}`);
       a.format("DD/MM/YYYY hh:mm:ss");
       this.totalTime = b.diff(a, "hours");
+      if (isNaN(this.totalTime)) {
+        console.log("found a boggy");
+        this.totalTime = 0;
+      }
       console.log(this.totalTime);
       console.log(index);
       this.passIndex(index);
@@ -189,17 +205,34 @@ export default {
     passIndex(index) {
       this.index = index;
       console.log("value of index", index);
-      console.log((this.testArray[index].total = this.totalTime));
-      console.log(this.testArray);
-      this.showHours();
+      console.log((this.ethelArray[index].total = this.totalTime));
+      console.log(this.ethelArray);
+      this.showHours(index);
     },
-    showHours() {
+    showHours(newValue) {
+      console.log("value of index: ", newValue);
       let sum = 0;
-      this.testArray.forEach((item) => {
-        console.log("item.total", item.total);
+      this.ethelArray.forEach((item, index) => {
+        console.log("index in forEach: ", index);
         sum += item.total;
+        if (newValue === index) {
+          if (this.ethelArray[newValue].total > 5) {
+            this.ethelArray[newValue].attendance = "attended";
+            this.ethelArray[newValue].color = "#74dc44";
+          } else if (
+            this.ethelArray[newValue].total < 8 &&
+            this.ethelArray[newValue].total > 0
+          ) {
+            this.ethelArray[newValue].attendance = "partial";
+            this.ethelArray[newValue].color = "#ffeb3b";
+          } else if (this.ethelArray[newValue].total < 0) {
+            this.ethelArray[newValue].color = "white";
+          } else {
+            this.ethelArray[newValue].attendance = "absent";
+            this.ethelArray[newValue].color = "#ff9d9d";
+          }
+        }
       });
-      console.log("value of sum", sum);
       this.sumHours = sum;
     },
   },
