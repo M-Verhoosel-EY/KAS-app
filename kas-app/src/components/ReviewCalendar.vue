@@ -16,24 +16,20 @@
         <tbody>
           <tr>
             <td colspan="2" class="rpl-type-label">Everett Friedman</td>
-            <td>
+            <td v-for="(day, index) in everettArray" :key="day.id">
               <DropDown
-                @changeCheckIn="ChangeInTime($event)"
-                @changeCheckOut="ChangeOutTime($event)"
+                v-bind:style="[{ backgroundColor: day.color }]"
+                @changeCheckIn="
+                  ChangeInTime($event), passIndex(index, everettArray)
+                "
+                @changeCheckOut="
+                  ChangeOutTime($event), passIndex(index, everettArray)
+                "
               />
             </td>
-            <td>
-              <DropDown
-                @changeCheckIn="ChangeInTime($event)"
-                @changeCheckOut="ChangeOutTime($event)"
-              />
-            </td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
-            <td><RplButton label="08:00-15:00" id="present-button" /></td>
             <td>
               <RplButton
-                :label="totalTime"
+                :label="everettArray[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
               />
@@ -44,13 +40,17 @@
             <td v-for="(day, index) in ethelArray" :key="day.id">
               <DropDown
                 v-bind:style="[{ backgroundColor: day.color }]"
-                @changeCheckIn="ChangeInTime($event), passIndex(index)"
-                @changeCheckOut="ChangeOutTime($event), passIndex(index)"
+                @changeCheckIn="
+                  ChangeInTime($event), passIndex(index, ethelArray)
+                "
+                @changeCheckOut="
+                  ChangeOutTime($event), passIndex(index, ethelArray)
+                "
               />
             </td>
             <td>
               <RplButton
-                :label="sumHours"
+                :label="ethelArray[0].summedHours"
                 variant="outlined"
                 id="total-hours-button"
               />
@@ -139,6 +139,7 @@ export default {
       totalWeekTime: 0,
       dayOfWeek: 0,
       index: 0,
+      child: "testChild",
       days: [
         {
           name: "Everett Friedman",
@@ -165,18 +166,18 @@ export default {
         },
       ],
       ethelArray: [
-        { total: 0, id: 1, attendance: "", color: "" },
+        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
         { total: 0, id: 2, attendance: "", color: "" },
         { total: 0, id: 3, attendance: "", color: "" },
         { total: 0, id: 4, attendance: "", color: "" },
         { total: 0, id: 5, attendance: "", color: "" },
       ],
       everettArray: [
-        { total: 0, id: 1 },
-        { total: 0, id: 2 },
-        { total: 0, id: 3 },
-        { total: 0, id: 4 },
-        { total: 0, id: 5 },
+        { total: 0, id: 1, attendance: "", color: "", summedHours: 0 },
+        { total: 0, id: 2, attendance: "", color: "" },
+        { total: 0, id: 3, attendance: "", color: "" },
+        { total: 0, id: 4, attendance: "", color: "" },
+        { total: 0, id: 5, attendance: "", color: "" },
       ],
     };
   },
@@ -188,7 +189,8 @@ export default {
       this.checkOutTime = checkOutTime;
     },
     handleAbsent() {},
-    hourDifference(index) {
+    hourDifference(index, child) {
+      console.log("value of child in hour difference: ", child);
       console.log("checkInTime: ", this.checkInTime);
       let a = moment(`2016-06-06T${this.checkInTime}`);
       let b = moment(`2016-06-06T${this.checkOutTime}`);
@@ -200,48 +202,50 @@ export default {
       }
       console.log(this.totalTime);
       console.log(index);
-      this.passIndex(index);
+      this.passIndex(index, child);
     },
-    passIndex(index) {
+    passIndex(index, child) {
       this.index = index;
-      console.log("value of index", index);
-      console.log((this.ethelArray[index].total = this.totalTime));
-      console.log(this.ethelArray);
-      this.showHours(index);
+      this.child = child;
+      console.log((this.child[index].total = this.totalTime));
+      console.log(this.child);
+      this.showHours(index, child);
     },
-    showHours(newValue) {
-      console.log("value of index: ", newValue);
+    showHours(newValue, child) {
+      console.log("value of child in show hours", child[0].summedHours);
       let sum = 0;
-      this.ethelArray.forEach((item, index) => {
+      this.child.forEach((item, index) => {
         console.log("index in forEach: ", index);
         sum += item.total;
         if (newValue === index) {
-          if (this.ethelArray[newValue].total > 5) {
-            this.ethelArray[newValue].attendance = "attended";
-            this.ethelArray[newValue].color = "#74dc44";
+          if (this.child[newValue].total > 5) {
+            this.child[newValue].attendance = "attended";
+            this.child[newValue].color = "#74dc44";
           } else if (
-            this.ethelArray[newValue].total < 8 &&
-            this.ethelArray[newValue].total > 0
+            this.child[newValue].total < 8 &&
+            this.child[newValue].total > 0
           ) {
-            this.ethelArray[newValue].attendance = "partial";
-            this.ethelArray[newValue].color = "#ffeb3b";
-          } else if (this.ethelArray[newValue].total < 0) {
-            this.ethelArray[newValue].color = "white";
+            this.child[newValue].attendance = "partial";
+            this.child[newValue].color = "#ffeb3b";
+          } else if (this.child[newValue].total < 0) {
+            this.child[newValue].color = "white";
           } else {
-            this.ethelArray[newValue].attendance = "absent";
-            this.ethelArray[newValue].color = "#ff9d9d";
+            this.child[newValue].attendance = "absent";
+            this.child[newValue].color = "#ff9d9d";
           }
         }
       });
-      this.sumHours = sum;
+      this.child[0].summedHours = sum;
+      //this.sumHours = sum;
+      console.log("total hours: ", this.child[0].summedHours);
     },
   },
   watch: {
     checkInTime() {
-      this.hourDifference(this.index);
+      this.hourDifference(this.index, this.child);
     },
     checkOutTime() {
-      this.hourDifference(this.index);
+      this.hourDifference(this.index, this.child);
     },
   },
 };
