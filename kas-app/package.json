@@ -13,6 +13,8 @@
     "@vue/cli": "^5.0.8",
     "@vuepic/vue-datepicker": "^6.0.1",
     "vue": "^3.3.4",
+    "vue-file-toolbar-menu": "^2.2.0",
+    "vue-final-modal": "^4.4.5",
     "vue-moment": "^4.1.0",
     "vue-router": "^4.2.4",
     "vuetify": "^3.3.13"
