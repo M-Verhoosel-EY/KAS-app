@@ -7,6 +7,9 @@
             <div class="rpl-card rpl-u-padding-8">
               <p class="rpl-type-p rpl-u-margin-b-4">Dear DE,</p>
               <p class="rpl-type-p rpl-u-margin-b-4">
+                Welcome to a prototype of KAS.
+              </p>
+              <p class="rpl-type-p rpl-u-margin-b-4">
                 This microsite has been developed alongside our approach in
                 responding to your Kindergarten Attendance Program Requestion
                 for Quote (RFQ). ​
@@ -30,10 +33,37 @@
                 questions.
               </p>
               <p class="rpl-type-p rpl-u-margin-b-4">Kind Regards,</p>
-              <div style="height: 36rem"></div>
+              <div style="display: block; margin-top: 3rem">
+                <p
+                  class="rpl-type-p rpl-u-margin-b-4"
+                  style="display: block; margin-right: 2rem"
+                >
+                  <strong>Kerrie J McGrath</strong>
+                </p>
+                <p
+                  class="rpl-type-p rpl-u-margin-b-4"
+                  style="display: block; margin-right: 2rem"
+                >
+                  <a href="mailto:kerrie.j.mcgrath@au.ey.com"
+                    >kerrie.j.mcgrath@au.ey.com</a
+                  >
+                </p>
+                <p class="rpl-type-p rpl-u-margin-b-4" style="display: block">
+                  <strong>Brendan Whiting</strong>
+                </p>
+                <p
+                  class="rpl-type-p rpl-u-margin-b-4"
+                  style="display: block; margin-right: 2rem"
+                >
+                  <a href="mailto:brendan.whiting@au.ey.com"
+                    >brendan.whiting@au.ey.com</a
+                  >
+                </p>
+              </div>
+              <div style="height: 10rem"></div>
             </div>
           </div>
-          <div class="rpl-col-8 rpl-col-start-4">
+          <div class="rpl-col-9 rpl-col-start-4" style="margin-right: 1.5rem">
             <div class="rpl-card rpl-u-padding-8">
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
                 Designing this Microsite

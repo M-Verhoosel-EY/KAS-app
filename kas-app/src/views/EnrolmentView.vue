@@ -269,21 +269,21 @@ export default {
       profiles: [
         {
           id: 1,
-          name: "Chloe Friedman",
+          name: "Aria Chang",
           DOB: "09/04/2019",
           ATSI: "No",
         },
         {
           id: 2,
-          name: "Ethel Terry",
+          name: "Kirra Mununjali",
           DOB: "27/08/2019",
-          ATSI: "No",
+          ATSI: "Yes",
         },
         {
           id: 3,
-          name: "Andrew Fisher",
+          name: "Malik Khan",
           DOB: "30/10/2019",
-          ATSI: "Yes",
+          ATSI: "No",
         },
         {
           id: 4,
@@ -293,9 +293,9 @@ export default {
         },
         {
           id: 5,
-          name: "Bryan Erickson",
+          name: "Levi Lucas",
           DOB: "22/01/2019",
-          ATSI: "Yes",
+          ATSI: "No",
         },
       ],
       enrolled: [],

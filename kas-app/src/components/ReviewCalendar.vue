@@ -16,7 +16,7 @@
         <tbody>
           <tr>
             <td colspan="2" class="rpl-type-label" style="width: 10rem">
-              Chloe Friedman
+              Aria Chang
             </td>
             <td v-for="(day, index) in chloeAttendance" :key="day.id">
               <DropDown
@@ -49,7 +49,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="rpl-type-label">Ethel Terry</td>
+            <td colspan="2" class="rpl-type-label">Kirra Mununjali</td>
             <td v-for="(day, index) in ethelAttendance" :key="day.id">
               <DropDown
                 v-bind:title="ethelAttendance[index].title"
@@ -80,7 +80,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="rpl-type-label">Andrew Fisher</td>
+            <td colspan="2" class="rpl-type-label">Malik Khan</td>
             <td v-for="(day, index) in andrewAttendance" :key="day.id">
               <DropDown
                 v-bind:title="andrewAttendance[index].title"
@@ -142,7 +142,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2" class="rpl-type-label">Bryan Erickson</td>
+            <td colspan="2" class="rpl-type-label">Levi Lucas</td>
             <td v-for="(day, index) in bryanAttendance" :key="day.id">
               <DropDown
                 v-bind:title="bryanAttendance[index].title"

@@ -73,15 +73,15 @@ export default {
       children: [
         {
           id: 1,
-          name: "Chloe Friedman",
+          name: "Aria Chang",
         },
         {
           id: 2,
-          name: "Ethel Terry",
+          name: "Kirra Mununjali",
         },
         {
           id: 3,
-          name: "Andrew Fisher",
+          name: "Malik Khan",
         },
         {
           id: 4,
@@ -89,7 +89,7 @@ export default {
         },
         {
           id: 5,
-          name: "Bryan Erickson",
+          name: "Levi Lucas",
         },
       ],
     };

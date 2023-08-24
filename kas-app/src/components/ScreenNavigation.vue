@@ -3,20 +3,20 @@
     <div class="sb-container" id="teacher-tags" style="display: inline-block">
       <a href="/welcome"><h1 class="horizontal-items">Welcome</h1></a>
       <InformationCircleIcon
-        style="width: 2.5rem; color: #0052c2"
+        class="information-icon"
         @click="() => TogglePopup('screen1Trigger')"
       />
       <a href="/enrolment"><h1 class="horizontal-items">Screen 1</h1></a>
 
       <InformationCircleIcon
-        style="width: 2.5rem; color: #0052c2"
+        class="information-icon"
         @click="() => TogglePopup('screen2Trigger')"
       />
       <a href="/record-attendance"
         ><h1 class="horizontal-items">Screen 2</h1></a
       >
       <InformationCircleIcon
-        style="width: 2.5rem; color: #0052c2"
+        class="information-icon"
         @click="() => TogglePopup('screen3Trigger')"
       />
 
@@ -220,13 +220,13 @@
                 vaccination etc.)​
               </li>
               <li>
-                3. “Absent” – the child did not attend for the duration
-                of the day. For the purpose of this demonstration we have kept
-                this status as the inverse of attendance, however, we note that
+                3. “Absent” – the child did not attend for the duration of the
+                day. For the purpose of this demonstration we have kept this
+                status as the inverse of attendance, however, we note that
                 absenteeism can probably fall into several more detailed
-                branches of statuses where a record of absent for
-                legitimate and/or non-legitimate reasons may be required in the
-                data capture. ​
+                branches of statuses where a record of absent for legitimate
+                and/or non-legitimate reasons may be required in the data
+                capture. ​
               </li>
             </ul>
             <li>
@@ -385,5 +385,14 @@ export default {
 p {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.information-icon {
+  margin-bottom: -1rem;
+  width: 3rem;
+  color: #0052c2;
+  margin-right: 1rem;
+}
+.information-icon:hover {
+  cursor: pointer;
 }
 </style>
