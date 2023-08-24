@@ -90,17 +90,74 @@
         <RecordCalendar />
         <div>
           <RplButton id="action-buttons">SAVE</RplButton>
-          <RplButton id="action-buttons">SUBMIT ATTENDANCE</RplButton>
+          <RplButton
+            id="action-buttons"
+            @click="() => TogglePopup('submitAttendanceTrigger')"
+            >SUBMIT ATTENDANCE</RplButton
+          >
         </div>
       </RplNavCard>
     </div>
+    <Popup
+      v-if="popupTriggers.submitAttendanceTrigger"
+      :TogglePopup="() => TogglePopup('submitAttendanceTrigger')"
+    >
+      <div>
+        <h3 class="rpl-type-h3-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
+          SUBMIT ATTENDANCE ​
+        </h3>
+        <p class="rpl-type-p rpl-type-weight-bold" style="margin-bottom: 3rem">
+          Monday 28th August, 2023
+        </p>
+      </div>
+      <p class="rpl-type-p" style="margin-bottom: 3rem">
+        You understand that by submitting this daily attendance...
+      </p>
+      <RplButton
+        label="BACK"
+        style="margin-right: 15rem; padding-right: 5rem; padding-left: 5rem"
+        @click="TogglePopup('submitAttendanceTrigger')"
+      />
+      <RplButton
+        label="SUBMIT"
+        style="padding-right: 5rem; padding-left: 5rem"
+        @click="TogglePopup('submitAttendanceTrigger')"
+      />
+    </Popup>
   </div>
 </template>
 
 <script>
 import DatePicker from "../components/DatePicker.vue";
+import { ref } from "vue";
+import Popup from "../components/Popup.vue";
+import { RplNavCard, RplButton, RplChip } from "@dpc-sdp/ripple-ui-core/vue";
+import RecordCalendar from "../components/RecordCalendar.vue";
+import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
+
 export default {
-  props: ["className"],
+  setup() {
+    const popupTriggers = ref({
+      submitAttendanceTrigger: false,
+    });
+    const TogglePopup = (trigger) => {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+    };
+    return {
+      Popup,
+      popupTriggers,
+      TogglePopup,
+    };
+  },
+  components: {
+    Popup,
+    DatePicker,
+    RplButton,
+    RplNavCard,
+    RplChip,
+    RecordCalendar,
+    CalendarDaysIcon,
+  },
   data() {
     return {
       className: "Class 1A",
@@ -112,17 +169,6 @@ export default {
     },
   },
 };
-</script>
-
-<script setup>
-import {
-  RplNavCard,
-  RplButton,
-  RplIcon,
-  RplChip,
-} from "@dpc-sdp/ripple-ui-core/vue";
-import RecordCalendar from "../components/RecordCalendar.vue";
-import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <style>

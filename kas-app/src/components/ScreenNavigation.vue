@@ -121,6 +121,9 @@
             select ‘Screen 2’ at the top of the screen
           </h2>
         </div>
+        <RplButton @click="TogglePopup('screen1Trigger')" id="close-button"
+          >Close</RplButton
+        >
       </Popup>
       <!-- <div>------BREAK-------</div> -->
       <Popup
@@ -243,6 +246,9 @@
             select ‘Screen 3’ at the top of the screen
           </h2>
         </div>
+        <RplButton @click="TogglePopup('screen2Trigger')" id="close-button"
+          >Close</RplButton
+        >
       </Popup>
       <!-- <div>------BREAK-------</div> -->
       <Popup
@@ -342,6 +348,9 @@
             select ‘Welcome’ at the top of the screen
           </h2>
         </div>
+        <RplButton @click="TogglePopup('screen3Trigger')" id="close-button"
+          >Close</RplButton
+        >
       </Popup>
     </div>
   </div>
@@ -378,6 +387,11 @@ export default {
 </script>
 
 <style scoped>
+#close-button {
+  float: right;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
 .horizontal-items {
   display: inline-block;
   margin-right: 5rem;

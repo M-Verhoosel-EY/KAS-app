@@ -2,7 +2,6 @@
   <div class="popup">
     <div class="popup-inner">
       <slot />
-      <RplButton @click="TogglePopup()">Close</RplButton>
     </div>
   </div>
 </template>
@@ -34,8 +33,8 @@ import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
   .popup-inner {
     background: white;
     padding: 32px;
-    max-width: 120rem;
-    min-width: 120rem;
+    width: auto;
+    margin: 0 5rem;
   }
 }
 </style>
