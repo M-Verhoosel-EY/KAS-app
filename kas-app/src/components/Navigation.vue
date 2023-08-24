@@ -5,11 +5,6 @@ import image from "../assets/images/vic-gov.png";
 
 <template>
   <div>
-    <img
-      id="navbar"
-      src="../assets/images/header-pattern-shape.png"
-      width="300"
-    />
     <div id="navbar">
       <RplPrimaryNav
         class="rpl-primary-nav__primary-logo-image"
@@ -19,28 +14,6 @@ import image from "../assets/images/vic-gov.png";
           printsrc: '../assets/images/vic-gov.png',
           altText: 'VIC.GOV.AU',
         }"
-        :items="[
-          {
-            id: '1',
-            text: 'Welcome',
-            url: '/welcome',
-          },
-          {
-            id: '2',
-            text: 'Enrolment',
-            url: '/enrolment',
-          },
-          {
-            id: '3',
-            text: 'Record Attendance',
-            url: '/record-attendance',
-          },
-          {
-            id: '4',
-            text: 'Review Attendance',
-            url: '/review-attendance',
-          },
-        ]"
         :showQuickExit="false"
       />
     </div>

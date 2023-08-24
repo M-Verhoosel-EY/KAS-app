@@ -53,7 +53,7 @@
                 CBD Campus
               </h2>
               <p class="rpl-type-p rpl-u-margin-b-8">
-                Number of Classes in Campus: 5
+                Number of Classes in Campus: 6
               </p>
               <hr />
               <button class="class-btn" id="selected-button">
@@ -344,6 +344,7 @@ import {
     background-color: white;
   }
   .enrolment {
+    margin-top: 4.5rem;
     min-height: 60vh;
     display: flex;
     align-items: center;

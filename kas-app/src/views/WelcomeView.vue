@@ -176,6 +176,7 @@ import { ArrowRightIcon } from "@heroicons/vue/24/solid";
 <style>
 @media (min-width: 1024px) {
   .welcome {
+    margin-top: 5.5rem;
     min-height: 60vh;
     display: flex;
     align-items: center;

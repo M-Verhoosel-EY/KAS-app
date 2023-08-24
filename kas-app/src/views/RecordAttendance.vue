@@ -177,6 +177,7 @@ import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 }
 @media (min-width: 1024px) {
   .record-attendance {
+    margin-top: 4rem;
     display: grid;
     height: 80vh;
     grid-template-columns: repeat(12, 1fr);

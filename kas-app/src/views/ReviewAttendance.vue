@@ -100,6 +100,7 @@ import {
 <style>
 @media (min-width: 1024px) {
   .review-attendance {
+    margin-top: 4rem;
     display: grid;
     height: 80vh;
     grid-template-columns: repeat(12, 1fr);
