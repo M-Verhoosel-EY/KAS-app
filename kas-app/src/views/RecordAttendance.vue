@@ -3,7 +3,11 @@
     <div id="teacher-details">
       <RplNavCard title="Mrs. Smith">
         <p id="role-text">Teacher</p>
-        <img src="../assets/images/profile-placeholder.jpeg" width="120" />
+        <img
+          src="../assets/images/profile-placeholder.jpeg"
+          width="120"
+          style="border-radius: 4px"
+        />
         <div class="sb-container" id="teacher-tags">
           <RplChip
             label="Location"
@@ -85,8 +89,8 @@
         </div>
         <RecordCalendar />
         <div>
-          <RplButton id="action-buttons">Save</RplButton>
-          <RplButton id="action-buttons">Submit Attendance</RplButton>
+          <RplButton id="action-buttons">SAVE</RplButton>
+          <RplButton id="action-buttons">SUBMIT ATTENDANCE</RplButton>
         </div>
       </RplNavCard>
     </div>

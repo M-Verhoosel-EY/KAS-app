@@ -3,7 +3,11 @@
     <div id="teacher-details">
       <RplNavCard title="Mrs. Smith">
         <p id="role-text">Teacher</p>
-        <img src="../assets/images/profile-placeholder.jpeg" width="120" />
+        <img
+          src="../assets/images/profile-placeholder.jpeg"
+          width="120"
+          style="border-radius: 4px"
+        />
         <div class="sb-container" id="teacher-tags">
           <RplChip
             label="Location"
@@ -31,18 +35,21 @@
           Class 1A
         </button>
         <button
+          id="ignore-hover-button"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>
           Class 1B
         </button>
         <button
+          id="ignore-hover-button"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>
           Class 1C
         </button>
         <button
+          id="ignore-hover-button"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>

@@ -152,7 +152,13 @@
                   >
                     Go!
                   </h2>
-                  <p class="rpl-type-p rpl-u-margin-b-4">Next</p>
+                  <p class="rpl-type-p rpl-u-margin-b-4">
+                    <a href="/enrolment"
+                      ><ArrowRightIcon
+                        class="h-6 w-6 text-blue-250"
+                        style="color: #0052c2; width: 5rem"
+                    /></a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -162,6 +168,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ArrowRightIcon } from "@heroicons/vue/24/solid";
+</script>
 
 <style>
 @media (min-width: 1024px) {
