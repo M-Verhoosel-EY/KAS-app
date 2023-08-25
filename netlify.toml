@@ -1,3 +1,5 @@
 [build]
-  command = "npm run build"
+  base = "kas-app/"
   publish = "kas-app/dist"
+  command = "npm run build"
+  
