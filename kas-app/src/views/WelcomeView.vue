@@ -128,19 +128,19 @@
               <div class="rpl-grid" style="margin-top: 5rem; margin-left: 5rem">
                 <div class="rpl-col-2 rpl-col-start-1">
                   <p class="rpl-type-p rpl-u-margin-b-4">
-                    1. Linking an enrolled child to a kindergarten class
+                    Screen 1. Linking an enrolled child to a kindergarten class
                   </p>
                 </div>
                 <div class="rpl-col-3 rpl-col-start-4">
                   <p class="rpl-type-p rpl-u-margin-b-4">
-                    2. Recording enrolled children’s daily attendance at a
-                    kindergarten class
+                    Screen 2. Recording enrolled children’s daily attendance at
+                    a kindergarten class
                   </p>
                 </div>
                 <div class="rpl-col-3 rpl-col-start-7">
                   <p class="rpl-type-p rpl-u-margin-b-4">
-                    3. Reviewing weekly class attendance and formally submitting
-                    the time to DE.
+                    Screen 3. Reviewing weekly class attendance and formally
+                    submitting the time to DE.
                   </p>
                 </div>
               </div>
@@ -170,10 +170,11 @@
                     Set
                   </h2>
                   <p class="rpl-type-p rpl-u-margin-b-4">
-                    At each screen we recommend you click the ‘i’ icon displayed
-                    at the top as this will provide further context and
-                    narrative to the screen and outline the key functionality we
-                    invite engagement with the user.
+                    At each screen we recommend you click the
+                    <InformationCircleIcon class="information-icon" /> icon
+                    displayed at the top as this will provide further context
+                    and narrative to the screen and outline the key
+                    functionality we invite engagement with the user.
                   </p>
                 </div>
                 <div class="rpl-col-3 rpl-col-start-7">
@@ -182,6 +183,7 @@
                   >
                     Go!
                   </h2>
+                  <p class="rpl-type-p rpl-u-margin-b-4">Click here to start</p>
                   <p class="rpl-type-p rpl-u-margin-b-4">
                     <a href="/enrolment"
                       ><ArrowRightIcon
@@ -200,16 +202,22 @@
 </template>
 
 <script setup>
-import { ArrowRightIcon } from "@heroicons/vue/24/solid";
+import { ArrowRightIcon, InformationCircleIcon } from "@heroicons/vue/24/solid";
 </script>
 
-<style>
+<style scoped>
 @media (min-width: 1024px) {
   .welcome {
     margin-top: 5.5rem;
     min-height: 60vh;
     display: flex;
     align-items: center;
+  }
+  .information-icon {
+    margin-bottom: -1rem;
+    width: 3rem;
+    color: #0052c2;
+    margin-right: 1rem;
   }
 }
 </style>

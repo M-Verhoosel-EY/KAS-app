@@ -68,25 +68,23 @@
           <p><strong>Teacher Name</strong></p>
           <p>Year 1A</p>
         </ul>
-        <RplIcon
-          style="width: 50px"
-          name="icon-calendar-lined"
-          colour="default"
-          id="calendar-icon"
-        />
-        <div class="rpl-document__content">
-          <span
-            class="rpl-document__name rpl-type-p rpl-type-weight-bold rpl-u-focusable-inline"
-          >
-            WEEK 10
-          </span>
+        <div style="margin-top: 4rem">
+          <div style="display: inline-block">
+            <CalendarDaysIcon
+              style="
+                color: #0052c2;
+                width: 4rem;
+                justify-content: center;
+                display: flex;
+                justify-content: center;
+              "
+            />
+          </div>
+          <DatePicker style="width: fit-content" />
         </div>
         <ReviewCalendar />
         <div style="float: right; margin: 5rem 0">
-          <RplButton
-            label="SAVE"
-            id="action-buttons"
-          />
+          <RplButton label="SAVE" id="action-buttons" />
           <RplButton
             label="SUBMIT WEEKLY ATTENDANCE"
             id="action-buttons"
@@ -134,6 +132,8 @@ import {
 } from "@dpc-sdp/ripple-ui-core/vue";
 import { ref } from "vue";
 import Popup from "../components/Popup.vue";
+import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
+import DatePicker from "../components/DatePicker.vue";
 
 export default {
   setup() {
@@ -156,6 +156,8 @@ export default {
     RplIcon,
     RplNavCard,
     Popup,
+    CalendarDaysIcon,
+    DatePicker,
   },
 };
 </script>

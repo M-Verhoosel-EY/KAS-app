@@ -158,7 +158,7 @@
               </p>
               <h3 class="rpl-type-h3-fixed">Add Students</h3>
               <div class="add-students">
-                <a @click="removeUser(), addUser()" href="#" style="width: 50px"
+                <a @click="removeUser(), addUser()" style="width: 50px"
                   ><PlusIcon
                     class="h-6 w-6 text-blue-250"
                     style="color: #0052c2"
