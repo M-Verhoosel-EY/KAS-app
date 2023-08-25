@@ -8,11 +8,8 @@
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
                 INSTITUTION DETAILS
               </h2>
-              <p class="rpl-type-p rpl-u-margin-b-4">
-                Funding for public-facing small businesses to purchase equipment
-                and upgrades to improve ventilation and reduce the spread of
-                COVID-19 and boost customer confidence.
-              </p>
+              <p class="rpl-type-p rpl-u-margin-b-4">Name: ABC Kids</p>
+              <p class="rpl-type-p rpl-u-margin-b-4">Number of Campuses: 5</p>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
                 id="selected-button"
@@ -22,24 +19,28 @@
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Frankston
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Mulgrave
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Fitzroy
               </button>
               <button
                 class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+                id="ignore-hover-button"
               >
                 <div class="grey-square"></div>
                 Doncaster
@@ -49,12 +50,10 @@
           <div class="rpl-col-5 rpl-col-start-3">
             <div class="rpl-card rpl-u-padding-8">
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
-                CLASS
+                CBD Campus
               </h2>
               <p class="rpl-type-p rpl-u-margin-b-8">
-                Funding for public-facing small businesses to purchase equipment
-                and upgrades to improve ventilation and reduce the spread of
-                COVID-19 and boost customer confidence.
+                Number of Classes in Campus: 6
               </p>
               <hr />
               <button class="class-btn" id="selected-button">
@@ -72,7 +71,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -87,7 +86,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -102,7 +101,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -117,7 +116,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -132,7 +131,7 @@
                 />
               </button>
               <hr />
-              <button class="class-btn">
+              <button class="class-btn" id="ignore-hover-button">
                 <div class="class-btn-heading">
                   <div class="grey-line"></div>
                   <div>
@@ -152,16 +151,14 @@
           <div class="rpl-col-5 rpl-col-start-8" style="margin-right: 1.5rem">
             <div class="rpl-card rpl-u-padding-8">
               <h2 class="rpl-type-h2-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
-                CHILDREN
+                CBD Campus | Class 1A
               </h2>
               <p class="rpl-type-p rpl-u-margin-b-8">
-                Funding for public-facing small businesses to purchase equipment
-                and upgrades to improve ventilation and reduce the spread of
-                COVID-19 and boost customer confidence.
+                Students enrolled at the CBD Campus
               </p>
               <h3 class="rpl-type-h3-fixed">Add Students</h3>
               <div class="add-students">
-                <a @click="removeUser(), addUser()" href="#" style="width: 50px"
+                <a @click="removeUser(), addUser()" style="width: 50px"
                   ><PlusIcon
                     class="h-6 w-6 text-blue-250"
                     style="color: #0052c2"
@@ -191,8 +188,14 @@
               </div>
               <hr />
               <div class="enrolled-heading">
-                <h3 class="rpl-type-h3-fixed">Enrolled</h3>
-                <RplSearchBar variant="reverse" id="reverse" />
+                <h3 class="rpl-type-h3-fixed">
+                  Students currently enrolled in Class 1A
+                </h3>
+                <RplSearchBar
+                  variant="reverse"
+                  id="reverse"
+                  style="width: 20rem"
+                />
               </div>
               <div class="enrol-students">
                 <div class="rpl-table">
@@ -266,21 +269,21 @@ export default {
       profiles: [
         {
           id: 1,
-          name: "Chloe Friedman",
+          name: "Aria Chang",
           DOB: "09/04/2019",
           ATSI: "No",
         },
         {
           id: 2,
-          name: "Ethel Terry",
+          name: "Kirra Mununjali",
           DOB: "27/08/2019",
-          ATSI: "No",
+          ATSI: "Yes",
         },
         {
           id: 3,
-          name: "Andrew Fisher",
+          name: "Malik Khan",
           DOB: "30/10/2019",
-          ATSI: "Yes",
+          ATSI: "No",
         },
         {
           id: 4,
@@ -290,9 +293,9 @@ export default {
         },
         {
           id: 5,
-          name: "Bryan Erickson",
+          name: "Levi Lucas",
           DOB: "22/01/2019",
-          ATSI: "Yes",
+          ATSI: "No",
         },
       ],
       enrolled: [],
@@ -337,8 +340,12 @@ import {
   #selected-button {
     background-color: #e6f5fd;
   }
+  #ignore-hover-button:hover {
+    background-color: white;
+  }
   .enrolment {
-    min-height: 65vh;
+    margin-top: 4.5rem;
+    min-height: 60vh;
     display: flex;
     align-items: center;
   }

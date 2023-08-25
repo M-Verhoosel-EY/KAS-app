@@ -4,7 +4,8 @@
     position="left"
     :enable-time-picker="false"
     :disabled-week-days="[6, 0]"
-    :format="format"
+    :format="DD / MM / yyyy"
+    :text-input="true"
     auto-apply
     style="
       display: inline-block;
@@ -17,7 +18,7 @@
       <p
         class="rpl-document__name rpl-type-p rpl-type-weight-bold rpl-u-focusable-inline"
       >
-        {{ date }}
+        {{ format(date) }}
       </p>
     </template>
   </VueDatePicker>
@@ -39,15 +40,12 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "vue";
-import moment from "moment";
 
-const date = ref(new Date());
 const format = (date) => {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  return `${day}/${month}/${year}`;
+  return `${day}-${month}-${year}`;
 };
 </script>

@@ -3,7 +3,11 @@
     <div id="teacher-details">
       <RplNavCard title="Mrs. Smith">
         <p id="role-text">Teacher</p>
-        <img src="../assets/images/profile-placeholder.jpeg" width="120" />
+        <img
+          src="../assets/images/profile-placeholder.jpeg"
+          width="120"
+          style="border-radius: 4px"
+        />
         <div class="sb-container" id="teacher-tags">
           <RplChip
             label="Location"
@@ -33,7 +37,7 @@
           Class 1A
         </button>
         <button
-          @click="selectClass('Class 1B')"
+          id="ignore-hover-button"
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
         >
           <div class="grey-square"></div>
@@ -41,12 +45,14 @@
         </button>
         <button
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+          id="ignore-hover-button"
         >
           <div class="grey-square"></div>
           Class 1C
         </button>
         <button
           class="institution rpl-type-h3-fixed rpl-u-padding-8 rpl-u-margin-b-4"
+          id="ignore-hover-button"
         >
           <div class="grey-square"></div>
           Class 2A
@@ -82,19 +88,76 @@
           <DatePicker style="width: fit-content" />
         </div>
         <RecordCalendar />
-        <div>
-          <RplButton id="action-buttons">Save</RplButton>
-          <RplButton id="action-buttons">Submit Attendance</RplButton>
+        <div style="float: right; margin-bottom: 5rem">
+          <RplButton id="action-buttons">SAVE</RplButton>
+          <RplButton
+            id="action-buttons"
+            @click="() => TogglePopup('submitAttendanceTrigger')"
+            >SUBMIT ATTENDANCE</RplButton
+          >
         </div>
       </RplNavCard>
     </div>
+    <Popup
+      v-if="popupTriggers.submitAttendanceTrigger"
+      :TogglePopup="() => TogglePopup('submitAttendanceTrigger')"
+    >
+      <div>
+        <h3 class="rpl-type-h3-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
+          SUBMIT ATTENDANCE ​
+        </h3>
+        <p class="rpl-type-p rpl-type-weight-bold" style="margin-bottom: 3rem">
+          Monday 28th August, 2023
+        </p>
+      </div>
+      <p class="rpl-type-p" style="margin-bottom: 3rem">
+        You understand that by submitting this daily attendance...
+      </p>
+      <RplButton
+        label="BACK"
+        style="margin-right: 15rem; padding-right: 5rem; padding-left: 5rem"
+        @click="TogglePopup('submitAttendanceTrigger')"
+      />
+      <RplButton
+        label="SUBMIT"
+        style="padding-right: 5rem; padding-left: 5rem"
+        @click="TogglePopup('submitAttendanceTrigger')"
+      />
+    </Popup>
   </div>
 </template>
 
 <script>
 import DatePicker from "../components/DatePicker.vue";
+import { ref } from "vue";
+import Popup from "../components/Popup.vue";
+import { RplNavCard, RplButton, RplChip } from "@dpc-sdp/ripple-ui-core/vue";
+import RecordCalendar from "../components/RecordCalendar.vue";
+import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
+
 export default {
-  props: ["className"],
+  setup() {
+    const popupTriggers = ref({
+      submitAttendanceTrigger: false,
+    });
+    const TogglePopup = (trigger) => {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+    };
+    return {
+      Popup,
+      popupTriggers,
+      TogglePopup,
+    };
+  },
+  components: {
+    Popup,
+    DatePicker,
+    RplButton,
+    RplNavCard,
+    RplChip,
+    RecordCalendar,
+    CalendarDaysIcon,
+  },
   data() {
     return {
       className: "Class 1A",
@@ -108,18 +171,10 @@ export default {
 };
 </script>
 
-<script setup>
-import {
-  RplNavCard,
-  RplButton,
-  RplIcon,
-  RplChip,
-} from "@dpc-sdp/ripple-ui-core/vue";
-import RecordCalendar from "../components/RecordCalendar.vue";
-import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
-</script>
-
 <style>
+#ignore-hover-button:hover {
+  background-color: white;
+}
 #action-buttons {
   margin: 5rem 4rem 0 0;
   width: 35rem;
@@ -168,6 +223,7 @@ import { CalendarDaysIcon } from "@heroicons/vue/24/solid";
 }
 @media (min-width: 1024px) {
   .record-attendance {
+    margin-top: 4rem;
     display: grid;
     height: 80vh;
     grid-template-columns: repeat(12, 1fr);

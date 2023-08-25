@@ -45,8 +45,15 @@
             <td></td>
             <td>
               <div v-if="partialIsVisible[index]">
-                <p>Check In: 09:00</p>
-                <p>Check Out: 13:00</p>
+                <DropDown
+                  v-bind:title="children[index].checkInChild"
+                  v-bind:checkOutChild="children[index].checkOutChild"
+                  v-bind:childArray="children[index]"
+                  v-bind:dayIndex="children[index].total"
+                  id="dropdown"
+                  @changeCheckIn="ChangeInTime($event)"
+                  @changeCheckOut="ChangeOutTime($event)"
+                />
               </div>
             </td>
             <td></td>
@@ -54,7 +61,18 @@
               class="rpl-type-label rpl-type-weight-bold"
               style="text-align: center"
             >
-              {{ attendance[index] }}
+              <RplButton
+                v-bind:style="[
+                  children[index].total == 0
+                    ? { borderColor: '#ff9d9d' }
+                    : children[index].total == 6
+                    ? { borderColor: '#74dc44' }
+                    : { borderColor: '#ffeb3b' },
+                ]"
+                :label="children[index].total"
+                id="total-hours-button"
+                variant="outlined"
+              />
             </td>
           </tr>
         </tbody>
@@ -64,66 +82,108 @@
 </template>
 
 <script>
+import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
+import moment from "moment";
+import DropDown from "./DropDown.vue";
+
 export default {
+  components: {
+    RplButton,
+    DropDown,
+  },
   data() {
     return {
+      checkInTime: "09:00",
+      checkOutTime: "13:00",
+      totalTime: "00:00",
+      isActive: false,
       totalTime: "",
-      attendance: [, , , ,],
+      index: 0,
+      attendance: ["0", "0", "0", "0", "0"],
       partialIsVisible: [false, false, false, false, false],
       children: [
         {
           id: 1,
-          name: "Chloe Friedman",
+          name: "Aria Chang",
+          checkOutChild: "13:00",
+          checkInChild: "09:00",
+          total: 4,
         },
         {
           id: 2,
-          name: "Ethel Terry",
+          name: "Kirra Mununjali",
+          checkOutChild: "15:00",
+          checkInChild: "09:00",
+          total: "0",
         },
         {
           id: 3,
-          name: "Andrew Fisher",
+          name: "Malik Khan",
+          checkOutChild: "15:00",
+          checkInChild: "09:00",
+          total: 6,
         },
         {
           id: 4,
           name: "Jessie Montes",
+          checkOutChild: "13:00",
+          checkInChild: "09:00",
+          total: 4,
         },
         {
           id: 5,
-          name: "Bryan Erickson",
+          name: "Levi Lucas",
+          checkOutChild: "15:00",
+          checkInChild: "09:00",
+          total: 6,
         },
       ],
     };
   },
   methods: {
+    ChangeInTime({ timeIn, childArray, dayIndex, timeOut }) {
+      this.checkInTime = timeIn;
+      this.checkOutTime = timeOut;
+    },
+    ChangeOutTime({ timeOut, childArray, dayIndex, timeIn }) {
+      this.checkInTime = timeIn;
+      this.checkOutTime = timeOut;
+    },
     present(hours, index) {
-      this.attendance[index] = hours;
+      this.children[index].total = hours;
       if (this.partialIsVisible[index]) {
         this.partialIsVisible[index] = false;
       }
     },
     absent(hours, index) {
-      this.attendance[index] = hours;
+      this.children[index].total = hours;
       if (this.partialIsVisible[index]) {
         this.partialIsVisible[index] = false;
       }
     },
     partial(index) {
+      this.index = index;
       this.partialIsVisible[index] = !this.partialIsVisible[index];
+      console.log(this.children[index].total);
     },
     hourDifference(index) {
-      let a = moment("2016-06-06T09:00:00");
-      let b = moment("2016-06-06T13:00:00");
+      console.log("index: ", index);
+      let a = moment(`2016-06-06T${this.checkInTime}`);
+      let b = moment(`2016-06-06T${this.checkOutTime}`);
       a.format("DD/MM/YYYY hh:mm:ss");
       this.totalTime = b.diff(a, "hours");
-      this.attendance[index] = this.totalTime;
+      this.children[index].total = this.totalTime;
+    },
+  },
+  watch: {
+    checkInTime() {
+      this.hourDifference(this.index, this.child);
+    },
+    checkOutTime() {
+      this.hourDifference(this.index, this.child);
     },
   },
 };
-</script>
-
-<script setup>
-import { RplButton } from "@dpc-sdp/ripple-ui-core/vue";
-import moment from "moment";
 </script>
 
 <style scoped>
