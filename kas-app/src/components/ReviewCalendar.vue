@@ -173,18 +173,6 @@
             </td>
           </tr>
         </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">
-              <RplButton
-                label="SAVE"
-                id="test-button"
-                style="margin-right: 5rem; width: 15rem"
-              />
-              <RplButton label="SUBMIT WEEKLY ATTENDANCE" id="test-button" />
-            </td>
-          </tr>
-        </tfoot>
       </table>
     </div>
   </div>

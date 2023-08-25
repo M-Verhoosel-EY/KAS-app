@@ -88,7 +88,7 @@
           <DatePicker style="width: fit-content" />
         </div>
         <RecordCalendar />
-        <div>
+        <div style="float: right; margin-bottom: 5rem">
           <RplButton id="action-buttons">SAVE</RplButton>
           <RplButton
             id="action-buttons"

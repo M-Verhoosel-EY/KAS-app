@@ -82,12 +82,49 @@
           </span>
         </div>
         <ReviewCalendar />
+        <div style="float: right; margin: 5rem 0">
+          <RplButton
+            label="SAVE"
+            id="action-buttons"
+          />
+          <RplButton
+            label="SUBMIT WEEKLY ATTENDANCE"
+            id="action-buttons"
+            @click="() => TogglePopup('submitReviewedAttendanceTrigger')"
+          />
+        </div>
       </RplNavCard>
     </div>
+    <Popup
+      v-if="popupTriggers.submitReviewedAttendanceTrigger"
+      :TogglePopup="() => TogglePopup('submitReviewedAttendanceTrigger')"
+    >
+      <div>
+        <h3 class="rpl-type-h3-fixed rpl-u-margin-b-4 rpl-u-margin-t-4">
+          SUBMIT WEEKLY ATTENDANCE ​
+        </h3>
+        <p class="rpl-type-p rpl-type-weight-bold" style="margin-bottom: 3rem">
+          WEEK 10
+        </p>
+      </div>
+      <p class="rpl-type-p" style="margin-bottom: 3rem">
+        You understand that by submitting this weekly attendance...
+      </p>
+      <RplButton
+        label="BACK"
+        style="margin-right: 15rem; padding-right: 5rem; padding-left: 5rem"
+        @click="TogglePopup('submitReviewedAttendanceTrigger')"
+      />
+      <RplButton
+        label="SUBMIT"
+        style="padding-right: 5rem; padding-left: 5rem"
+        @click="TogglePopup('submitReviewedAttendanceTrigger')"
+      />
+    </Popup>
   </div>
 </template>
 
-<script setup>
+<script>
 import ReviewCalendar from "../components/ReviewCalendar.vue";
 import {
   RplNavCard,
@@ -95,6 +132,32 @@ import {
   RplIcon,
   RplChip,
 } from "@dpc-sdp/ripple-ui-core/vue";
+import { ref } from "vue";
+import Popup from "../components/Popup.vue";
+
+export default {
+  setup() {
+    const popupTriggers = ref({
+      submitReviewedAttendanceTrigger: false,
+    });
+    const TogglePopup = (trigger) => {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+    };
+    return {
+      Popup,
+      popupTriggers,
+      TogglePopup,
+    };
+  },
+  components: {
+    ReviewCalendar,
+    RplButton,
+    RplChip,
+    RplIcon,
+    RplNavCard,
+    Popup,
+  },
+};
 </script>
 
 <style>
